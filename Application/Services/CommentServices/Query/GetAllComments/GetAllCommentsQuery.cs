@@ -1,14 +1,13 @@
 ﻿using Domain.Entities.CommentEntities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces.Repositories
+namespace Application.Services.CommentServices.Query.GetAllComments
 {
-    public interface ICommentRepository
-    {
-        public Task<IEnumerable<Comment>> GetAll();
-    }
+    public record GetAllCommentsQuery() : IRequest<IEnumerable<Comment>>;
+
 }

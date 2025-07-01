@@ -1,4 +1,7 @@
 ﻿using Domain.Entities.BlogEntities;
+using Domain.Entities.CategoryEntities;
+using Domain.Entities.CommentEntities;
+using Domain.Entities.TagEntities;
 using Domain.Entities.UserEntities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

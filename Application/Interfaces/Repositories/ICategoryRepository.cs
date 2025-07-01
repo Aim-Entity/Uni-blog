@@ -1,4 +1,4 @@
-﻿using Domain.Entities.BlogEntities;
+﻿using Domain.Entities.CategoryEntities;
 using Domain.Entities.UserEntities;
 using System;
 using System.Collections.Generic;

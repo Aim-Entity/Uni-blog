@@ -1,4 +1,7 @@
-﻿using Domain.Entities.UserEntities;
+﻿using Domain.Entities.CategoryEntities;
+using Domain.Entities.CommentEntities;
+using Domain.Entities.TagEntities;
+using Domain.Entities.UserEntities;
 using Domain.Enums.BlogEnums;
 using System;
 using System.Collections.Generic;

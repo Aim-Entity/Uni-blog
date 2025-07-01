@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities.BlogEntities;
+using Domain.Entities.TagEntities;
 using Infrastructure.DatabaseContext;
 using System;
 using System.Collections.Generic;
