@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.UserServices.Query.GetAllUsers;
+using Domain.Entities.UserEntities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Application.Services.UserServices
             _sender = sender;
         }
 
-        public async Task<IEnumerable<Dto>> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
             return await _sender.Send(new GetAllUsersQuery());
         }

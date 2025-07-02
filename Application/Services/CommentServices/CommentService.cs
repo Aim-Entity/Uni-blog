@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.CommentServices.Query.GetAllComments;
+using Domain.Entities.CommentEntities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Application.Services.CommentServices
             _sender = sender;
         }
 
-        public async Task<IEnumerable<Dto>> GetAll()
+        public async Task<IEnumerable<Comment>> GetAll()
         {
             return await _sender.Send(new GetAllCommentsQuery());
         }

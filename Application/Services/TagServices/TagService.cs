@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.TagServices.Query.GetAllTags;
+using Domain.Entities.TagEntities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Application.Services.TagServices
             _sender = sender;
         }
 
-        public async Task<IEnumerable<Dto>> GetAll()
+        public async Task<IEnumerable<Tag>> GetAll()
         {
             return await _sender.Send(new GetAllTagsQuery());
         }

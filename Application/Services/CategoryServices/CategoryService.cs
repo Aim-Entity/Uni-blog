@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.CategoryServices.Query.GetAllCategories;
+using Domain.Entities.CategoryEntities;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Application.Services.CategoryServices
             _sender = sender;
         }
 
-        public async Task<IEnumerable<Dto>> GetAll()
+        public async Task<IEnumerable<Category>> GetAll()
         {
             return await _sender.Send(new GetAllCategoriesQuery());
         }

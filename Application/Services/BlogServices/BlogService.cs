@@ -1,4 +1,6 @@
 ﻿using Application.Interfaces;
+using Application.Services.BlogServices.Query.GetAllBlogs;
+using Domain.Entities.BlogEntities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace Application.Services.BlogServices
             _sender = sender;
         }
 
-        public async Task<IEnumerable<Dto>> GetAll()
+        public async Task<IEnumerable<Blog>> GetAll()
         {
             return await _sender.Send(new GetAllBlogsQuery());
         }
