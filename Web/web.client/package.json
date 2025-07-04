@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^10.0.0",
     "@types/feather-icons": "^4.29.4",
     "bootstrap": "^5.3.7",
     "feather-icons-react": "^0.9.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-dropzone": "^14.3.8",
+    "react-flatpickr": "^4.0.10",
     "react-router-dom": "^7.6.3",
+    "react-select": "^5.10.1",
     "reactstrap": "^9.2.3"
   },
   "devDependencies": {
