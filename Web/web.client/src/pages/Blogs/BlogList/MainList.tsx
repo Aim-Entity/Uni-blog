@@ -14,7 +14,7 @@ const MainList = () => {
             "date": "05 Apr, 2024",
             "views": 451,
             "description": "Minimalism is more than just a trend; it's a movement that continues to influence design worldwide. Learn how simplicity in design evolved and why it remains impactful today.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#MinimalDesign", "#Simplicity", "#DesignTrends"]
         },
         {
@@ -24,7 +24,7 @@ const MainList = () => {
             "date": "11 Feb, 2024",
             "views": 713,
             "description": "Storytelling transforms user experiences by providing intuitive and engaging journeys. Discover how to integrate compelling narratives into UX design for maximum impact.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#UXDesign", "#Storytelling"]
         },
         {
@@ -34,7 +34,7 @@ const MainList = () => {
             "date": "09 July, 2024",
             "views": 479,
             "description": "In a world driven by trends, designing with purpose is key to creating meaningful work. Explore techniques to craft with intention and make every design count.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#MindfulDesign", "#IntentionalLiving", "#PurposefulWork"]
         },
         {
@@ -44,7 +44,7 @@ const MainList = () => {
             "date": "15 Sep, 2024",
             "views": 174,
             "description": "Juggling creativity with deadlines can be a challenge. This post covers essential workflow tips and tools to keep your design process efficient and inspired.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#CreativeProcess", "#ProductivityTips", "#DesignerLife"]
         },
         {
@@ -54,7 +54,7 @@ const MainList = () => {
             "date": "24 Oct, 2024",
             "views": 1926,
             "description": "Every designer faces creative block at some point. Learn actionable strategies to break through these moments and find inspiration to fuel your next project.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#CreativeBlock", "#DesignMotivation", "#CreativityUnleashed"]
         },
         {
@@ -64,7 +64,7 @@ const MainList = () => {
             "date": "20 Sept, 2024",
             "views": 1337,
             "description": "A strong brand identity is built on thoughtful design. Learn how to create cohesive visual stories that reflect your brand's values and connect with your audience.",
-            "read_more_link": "pages-blog-overview.html",
+            "read_more_link": "blog-overview.html",
             "tags": ["#BrandDesign", "#IdentityCreation"]
         }
     ]
@@ -84,7 +84,7 @@ const MainList = () => {
                 <div className="row g-4 mb-3">
                     <div className="col-sm-auto">
                         <div>
-                            <Link to="/apps-projects-create" className="btn btn-success"><i className="ri-add-line align-bottom me-1"></i> Add New</Link>
+                            <Link to="/blog-create" className="btn btn-success"><i className="ri-add-line align-bottom me-1"></i> Add New</Link>
                         </div>
                     </div>
                     <div className="col-sm">
@@ -119,14 +119,14 @@ const MainList = () => {
                                         </div>
                                         <div className="col-xxl-9 col-lg-7">
                                             <p className="mb-2 text-primary text-uppercase">{item.category}</p>
-                                            <Link to="/pages-blog-overview">
+                                            <Link to="/blog-overview">
                                                 <h5 className="fs-15 fw-semibold">{item.title}</h5>
                                             </Link>
                                             <div className="d-flex align-items-center gap-2 mb-3 flex-wrap">
-                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {item.date}</span> | <span className="text-muted"><i className="ri-eye-line me-1"></i> {item.views}</span> | <Link to="/pages-profile"><i className="ri-user-3-line me-1"></i> Admin</Link>
+                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {item.date}</span> | <span className="text-muted"><i className="ri-eye-line me-1"></i> {item.views}</span> | <span className='text-primary'><i className="ri-user-3-line me-1"></i> Admin</span>
                                             </div>
                                             <p className="text-muted mb-2">{item.description}</p>
-                                            <Link to="/pages-blog-overview" className="text-decoration-underline">Read more <i className="ri-arrow-right-line"></i></Link>
+                                            <Link to="/blog-overview" className="text-decoration-underline">Read more <i className="ri-arrow-right-line"></i></Link>
                                             <div className="d-flex align-items-center gap-2 mt-3 flex-wrap">
                                                 {item.tags.map((item, idx) => (
                                                     <Link to="#!" key={idx} className="badge text-success bg-success-subtle">{item}</Link>

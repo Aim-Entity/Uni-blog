@@ -21,7 +21,8 @@
     "react-flatpickr": "^4.0.10",
     "react-router-dom": "^7.6.3",
     "react-select": "^5.10.1",
-    "reactstrap": "^9.2.3"
+    "reactstrap": "^9.2.3",
+    "simplebar-react": "^3.3.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
