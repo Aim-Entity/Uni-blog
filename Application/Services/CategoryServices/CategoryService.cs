@@ -1,4 +1,5 @@
-﻿using Application.Services.CategoryServices.Query.GetAllCategories;
+﻿using Application.Interfaces;
+using Application.Services.CategoryServices.Query.GetAllCategories;
 using Domain.Entities.CategoryEntities;
 using MediatR;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.CategoryServices
 {
-    public class CategoryService
+    public class CategoryService: ICategoryService
     {
         private readonly ISender _sender;
 

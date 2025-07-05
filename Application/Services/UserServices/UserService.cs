@@ -1,4 +1,5 @@
-﻿using Application.Services.UserServices.Query.GetAllUsers;
+﻿using Application.Interfaces;
+using Application.Services.UserServices.Query.GetAllUsers;
 using Domain.Entities.UserEntities;
 using MediatR;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.UserServices
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly ISender _sender;
 

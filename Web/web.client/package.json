@@ -19,9 +19,11 @@
     "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.8",
     "react-flatpickr": "^4.0.10",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3",
     "react-select": "^5.10.1",
     "reactstrap": "^9.2.3",
+    "redux": "^5.0.1",
     "simplebar-react": "^3.3.2"
   },
   "devDependencies": {

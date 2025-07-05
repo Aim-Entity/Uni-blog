@@ -1,4 +1,5 @@
-﻿using Application.Services.TagServices.Query.GetAllTags;
+﻿using Application.Interfaces;
+using Application.Services.TagServices.Query.GetAllTags;
 using Domain.Entities.TagEntities;
 using MediatR;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.TagServices
 {
-    public class TagService
+    public class TagService : ITagService
     {
         private readonly ISender _sender;
 

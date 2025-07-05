@@ -1,4 +1,5 @@
-﻿using Application.Services.CommentServices.Query.GetAllComments;
+﻿using Application.Interfaces;
+using Application.Services.CommentServices.Query.GetAllComments;
 using Domain.Entities.CommentEntities;
 using MediatR;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.CommentServices
 {
-    public class CommentService
+    public class CommentService : ICommentService
     {
         private readonly ISender _sender;
 
