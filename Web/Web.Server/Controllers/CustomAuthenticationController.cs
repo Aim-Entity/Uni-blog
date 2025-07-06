@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Application.Services.AccountServices;
 using Domain.Entities.UserEntities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,18 +10,50 @@ namespace Web.Server.Controllers
     [ApiController]
     public class CustomAuthenticationController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IAccountServices _accountService;
 
-        public CustomAuthenticationController(IUserService userService)
+        public CustomAuthenticationController(IAccountServices accountService)
         {
-            _userService = userService;
+            _accountService = accountService;
         }
 
-        [HttpGet]
-        [Route("Users")]
-        public async Task<IEnumerable<User>> Users()
+        [HttpPost]
+        [Route("CustomRegister")]
+        public async Task<ActionResult> CustomRegister([FromBody] CustomRegisterRequest registerRequest)
         {
-            return await _userService.GetAll();
+            var res = await _accountService.RegisterAsync(registerRequest);
+
+            return Ok(new 
+            { 
+                data = new {
+                    email = res.Email,  name = res.ToString(), token = res.RefreshToken,
+                },
+                status = "success"
+            });
+        }
+
+        [HttpPost]
+        [Route("CustomLogin")]
+        public async Task<ActionResult> CustomLogin(Login login)
+        {
+            var res = await _accountService.LoginAsync(login);
+
+            return Ok(new
+            {
+                data = new { email = res.Email, name = res.ToString()},
+                status = "success"
+            });
+        }
+
+        [HttpPost]
+        [Route("CustomRefresh")]
+        public async Task<ActionResult> CustomRefresh()
+        {
+            var refreshToken = HttpContext.Request.Cookies["REFRESH_TOKEN"];
+
+            await _accountService.RefreshTokenAsync(refreshToken);
+
+            return Ok();
         }
     }
 }

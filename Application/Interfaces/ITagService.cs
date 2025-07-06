@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface ITagService
     {
         public Task<IEnumerable<Tag>> GetAll();
-        public Task<Tag> CreateNew();
+        // public Task<Tag> CreateNew();
     }
 }

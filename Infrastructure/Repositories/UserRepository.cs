@@ -2,6 +2,7 @@
 using Domain.Entities.BlogEntities;
 using Domain.Entities.UserEntities;
 using Infrastructure.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,11 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<User?> GetUserByRefreshTokenAsync(string refreshToken)
         {
-            return _context.Users;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+
+            return user;
         }
     }
 }

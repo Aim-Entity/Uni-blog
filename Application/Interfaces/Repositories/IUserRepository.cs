@@ -9,6 +9,6 @@ namespace Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {
-        public Task<IEnumerable<User>> GetAll();
+        Task<User?> GetUserByRefreshTokenAsync(string refreshToken);
     }
 }

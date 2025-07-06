@@ -40,6 +40,20 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [plugin()],
+    define: {
+      global: {},
+      'import.meta.env.VITE_PUBLIC_URL': JSON.stringify(process.env.VITE_PUBLIC_URL),
+      'import.meta.env.VITE_APP_API_URL': JSON.stringify(process.env.VITE_APP_API_URL),
+      'import.meta.env.VITE_APP_DEFAULTAUTH': JSON.stringify(process.env.VITE_APP_DEFAULTAUTH),
+      'import.meta.env.VITE_APP_APIKEY': JSON.stringify(process.env.VITE_APP_APIKEY),
+      'import.meta.env.VITE_APP_AUTHDOMAIN': JSON.stringify(process.env.VITE_APP_AUTHDOMAIN),
+      'import.meta.env.VITE_APP_DATABASEURL': JSON.stringify(process.env.VITE_APP_DATABASEURL),
+      'import.meta.env.VITE_APP_STORAGEBUCKET': JSON.stringify(process.env.VITE_APP_STORAGEBUCKET),
+      'import.meta.env.VITE_APP_MESSAGINGSENDERID': JSON.stringify(process.env.VITE_APP_MESSAGINGSENDERID),
+      'import.meta.env.VITE_APP_APPID': JSON.stringify(process.env.VITE_APP_APPID),
+      'import.meta.env.VITE_APP_MEASUREMENTID': JSON.stringify(process.env.VITE_APP_MEASUREMENTID),
+      'import.meta.env.VITE_APP_PROJECTID': JSON.stringify(process.env.VITE_APP_PROJECTID),
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -50,9 +64,17 @@ export default defineConfig({
             '^/weatherforecast': {
                 target,
                 secure: false
+            },
+            '^/api/CustomAuthentication/CustomLogin': {
+                target,
+                secure: false
+            },
+            '^/api/CustomAuthentication/CustomRegister': {
+                target,
+                secure: false
             }
         },
-        port: 58794,
+        port: 5173,
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),

@@ -1,5 +1,7 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.Interfaces.Auth;
+using Application.Interfaces.Repositories;
 using Infrastructure.DatabaseContext;
+using Infrastructure.Processors;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,7 @@ namespace Infrastructure
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IAuthTokenProcessor, AuthTokenProcessor>();
 
             return services;
         }

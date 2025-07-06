@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface IBlogService
     {
         public Task<IEnumerable<Blog>> GetAll();
-        public Task<Blog> CreateNew();
+        // public Task<Blog> CreateNew();
     }
 }

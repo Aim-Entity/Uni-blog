@@ -1,9 +1,9 @@
 ﻿using Application.Interfaces;
+using Application.Services.AccountServices;
 using Application.Services.BlogServices;
 using Application.Services.CategoryServices;
 using Application.Services.CommentServices;
 using Application.Services.TagServices;
-using Application.Services.UserServices;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace Application
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<ITagService, TagService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountServices, AccountServices>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 

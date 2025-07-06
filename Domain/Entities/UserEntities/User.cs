@@ -14,7 +14,7 @@ namespace Domain.Entities.UserEntities
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpiresAtUTC { get; set; }
 
-        public static User Create(string email, string firstName, string lastName, long companyId)
+        public static User Create(string email, string firstName, string lastName)
         {
             return new User
             {
