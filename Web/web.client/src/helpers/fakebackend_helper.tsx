@@ -28,8 +28,8 @@ type RegisterType = {
   confirm_password: string
 }
 
-export const postLoginUser = (user: LoginType) => api.create("https://localhost:7007/api/CustomAuthentication/CustomLogin", user, {
+export const postLoginUser = (user: LoginType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomLogin", user, {
   withCredentials: true
 });
 
-export const postRegisterUser = (user: RegisterType) => api.create("https://localhost:7007/api/CustomAuthentication/CustomRegister", user);
+export const postRegisterUser = (user: RegisterType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomRegister", user);

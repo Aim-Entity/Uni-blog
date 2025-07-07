@@ -3,7 +3,7 @@ import {
   postLoginUser,
 } from "../../../helpers/fakebackend_helper";
 
-import { loginSuccess, logoutUserSuccess, apiError } from './reducer';
+import { loginSuccess, logoutUserSuccess, apiError, reset_login_flag } from './reducer';
 
 export const loginUser = (user : any, history : any) => async (dispatch : any) => {
   try {
@@ -19,7 +19,7 @@ export const loginUser = (user : any, history : any) => async (dispatch : any) =
       response = finallogin.data;
       if (finallogin.status === "success") {
         dispatch(loginSuccess(response));
-        history('/dashboard-mvp')
+        history('/blog-list')
       } 
       else {
         dispatch(apiError(finallogin));
@@ -35,6 +35,15 @@ export const logoutUser = () => async (dispatch : any) => {
     sessionStorage.removeItem("authUser");
     dispatch(logoutUserSuccess(true));
 
+  } catch (error) {
+    dispatch(apiError(error));
+  }
+};
+
+export const resetLoginFlag = () => async (dispatch : any) => {
+  try {
+    const response = dispatch(reset_login_flag());
+    return response;
   } catch (error) {
     dispatch(apiError(error));
   }
