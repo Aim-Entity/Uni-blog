@@ -124,6 +124,7 @@ const Login = (props : any) => {
                                                             validation.touched.email && validation.errors.email ? true : false
                                                         }
                                                     />
+                                                    <p>{validation.values.email}</p>
                                                     {validation.touched.email && validation.errors.email ? (
                                                         <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
                                                     ) : null}

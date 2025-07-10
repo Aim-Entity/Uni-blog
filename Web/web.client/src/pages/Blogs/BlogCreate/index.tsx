@@ -1,16 +1,18 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardBody, CardHeader, Col, Container, Input, Label, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, Input, Label, Row } from 'reactstrap';
 //Import Flatepicker
-import Flatpickr from "react-flatpickr";
 import Select from "react-select";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import * as Yup from "yup";
 
 import Dropzone from "react-dropzone";
 
 //Import Images
-import avatar from "../../../assets/images/users/user-dummy-img.jpg";
+import { useFormik } from 'formik';
+import withRouter from '../../../Components/Common/withRouter';
+
 
 const BlogCreateView = () => {
     const SingleOptions = [
@@ -19,202 +21,193 @@ const BlogCreateView = () => {
         { value: 'Sweatshirt', label: 'Sweatshirt' },
         { value: '20% off', label: '20% off' },
         { value: '4 star', label: '4 star' },
-      ];
+    ];
+
+    type blogDraftType = {
+        title: string,
+        description: string,
+        private: boolean,
+        tags: string[],
+    }
+
+    const [blogDraft, setBlogDraft] = useState<blogDraftType>({
+        title: "",
+        description: "",
+        private: true,
+        tags: [""],
+    });
 
     const [selectedMulti, setselectedMulti] = useState<any>(null);
 
+    const [fileBase64, setFileBase64] = useState();
+      
+
     const handleMulti = (selectedMulti:any) => {
-    setselectedMulti(selectedMulti);
+        setselectedMulti(selectedMulti);
     }  
-    
-    //Dropzone file upload
-    const [selectedFiles, setselectedFiles] = useState<any>([]);
-  
-    const handleAcceptedFiles = (files:any) => {
-      files.map((file:any) =>
-        Object.assign(file, {
-          preview: URL.createObjectURL(file),
-          formattedSize: formatBytes(file.size),
-        })
-      );
-      setselectedFiles(files);
+
+    const validation : any = useFormik({
+        // enableReinitialize : use this flag when initial values needs to be changed
+        enableReinitialize: true,
+
+        initialValues: {
+            title: blogDraft.title || '',
+            private: blogDraft.private || 'Private',
+        },
+        validationSchema: Yup.object({
+            title: Yup.string().required("Please Enter Blog Title"),
+            private: Yup.string().required("Please Enter Blog Privacy"),
+        }),
+        onSubmit: (values) => {
+            setBlogDraft({...blogDraft, title: validation.values.title, private: validation.values.private == "Private" ? true : false});
+            console.log(blogDraft);
+        }
+    });
+
+    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.files);
+        const data = new FileReader();
+        data.addEventListener("load", () => {
+            setFileBase64(data.result);
+        });
+
+        data.readAsDataURL(e.target.files[0]);
     }
 
-        /**
-     * Formats the size
-     */
-    const formatBytes = (bytes:any, decimals = 2) => {
-        if (bytes === 0) return "0 Bytes";
-        const k = 1024;
-        const dm = decimals < 0 ? 0 : decimals;
-        const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
-    }
-
-document.title="Create Blog";
+    document.title="Create Blog";
 
     return (
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <Row>
-                        <Col lg={8}>
-                            <Card>
-                                <CardBody>
-                                    <div className="mb-3">
-                                        <Label className="form-label" htmlFor="project-title-input">Blog Title</Label>
-                                        <Input type="text" className="form-control" id="project-title-input"
-                                            placeholder="Enter project title" />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <Label className="form-label" htmlFor="project-thumbnail-img">Thumbnail Image</Label>
-                                        <Input className="form-control" id="project-thumbnail-img" type="file" accept="image/png, image/gif, image/jpeg" />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <Label className="form-label">Blog Description</Label>
-                                        <CKEditor
-                                            editor={ClassicEditor}
-                                            data="<p>Hello from CKEditor 5!</p>"
-                                            onReady={(editor) => {
-                                                // You can store the "editor" and use when it is needed.
-                                                
-                                            }}
-                                            // onChange={(editor) => {
-                                            //     editor.getData();
-                                            // }}
+                    <Form onSubmit={(e) => {
+                        e.preventDefault();
+                        validation.handleSubmit();
+                        console.log(validation)
+                        return false;
+                    }}
+                    action="#">
+                        <Row>
+                            <Col lg={8}>
+                                <Card>
+                                    <CardBody>
+                                        <div className="mb-3">
+                                            <Label className="form-label" htmlFor="title">Blog Title</Label>
+                                            <Input 
+                                                type="text" 
+                                                className="form-control" 
+                                                name="title"
+                                                placeholder="Enter project title" 
+                                                onChange={validation.handleChange}
+                                                onBlur={validation.handleBlur}
+                                                value={validation.values.title || ""}
+                                                invalid={
+                                                    validation.touched.title && validation.errors.title ? true : false
+                                                }
                                             />
-                                    </div>
-                                </CardBody>
-                            </Card>
-                            <Card>
-                                <CardHeader >
-                                    <h5 className="card-title mb-0">Attached files</h5>
-                                </CardHeader>
-                                <CardBody>
-                                    <div>
-                                        <p className="text-muted">Add Attached files here.</p>
 
-                                        <Dropzone
-                                            onDrop={acceptedFiles => {
-                                            handleAcceptedFiles(acceptedFiles);
-                                            }}
-                                        >
-                                            {({ getRootProps, getInputProps }) => (
-                                            <div className="dropzone dz-clickable">
-                                                <div
-                                                className="dz-message needsclick"
-                                                {...getRootProps()}
-                                                >
-                                                <div className="mb-3">
-                                                    <i className="display-4 text-muted ri-upload-cloud-2-fill" />
-                                                </div>
-                                                <h4>Drop files here or click to upload.</h4>
-                                                </div>
-                                            </div>
-                                            )}
-                                        </Dropzone>
+                                            {validation.touched.title && validation.errors.title ? (
+                                                <FormFeedback type="invalid">{validation.errors.title}</FormFeedback>
+                                            ) : null}
+                                        </div>
 
-                                        <ul className="list-unstyled mb-0" id="dropzone-preview">
-                                        
-                                        {selectedFiles.map((f:any, i:any) => {
-                                            return (
-                                                <Card
-                                                className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
-                                                key={i + "-file"}
-                                                >
-                                                <div className="p-2">
-                                                    <Row className="align-items-center">
-                                                    <Col className="col-auto">
-                                                        <img
-                                                        data-dz-thumbnail=""
-                                                        height="80"
-                                                        className="avatar-sm rounded bg-light"
-                                                        alt={f.name}
-                                                        src={f.preview}
-                                                        />
-                                                    </Col>
-                                                    <Col>
-                                                        <Link
-                                                        to="#"
-                                                        className="text-muted font-weight-bold"
-                                                        >
-                                                        {f.name}
-                                                        </Link>
-                                                        <p className="mb-0">
-                                                        <strong>{f.formattedSize}</strong>
-                                                        </p>
-                                                    </Col>
-                                                    </Row>
-                                                </div>
-                                                </Card>
-                                            );
-                                            })}
-                                        </ul>
+                                        <div className="mb-3">
+                                            <Label className="form-label" htmlFor="thumbnail">Thumbnail Image</Label>
+                                            <Input 
+                                                className="form-control" 
+                                                name="thumbnail" 
+                                                type="file" 
+                                                accept="image/png, image/gif, image/jpeg" 
+                                                onChange={onFileChange}
+                                            />
 
-                                    </div>
-                                </CardBody>
-                            </Card>
+                                        </div>
 
-                            <div className="text-end mb-4">
-                                <button type="submit" className="btn btn-success w-sm">Create</button>
-                            </div>
-                        </Col>
+                                        <div className="mb-3">
+                                            <Label className="form-label">Blog Description</Label>
+                                            <CKEditor
+                                                editor={ClassicEditor} 
+                                                data={blogDraft.description}
+                                                onReady={(editor) => {
+                                                    // You can store the "editor" and use when it is needed.
+                                                    
+                                                }}
+                                                onChange={(event, editor) => {
+                                                    const data = editor.getData();
+                                                    setBlogDraft({...blogDraft, description: data})
+                                                }}
+                                                />
+                                        </div>
+                                    </CardBody>
+                                </Card>
 
-                        <Col lg={4}>
-                            <div className="card">
-                                <div className="card-header">
-                                    <h5 className="card-title mb-0">Privacy</h5>
+                                <div className="text-end mb-4">
+                                    <button type="submit" className="btn btn-success w-sm">Create</button>
                                 </div>
-                                <CardBody>
-                                    <div>
-                                        <Label htmlFor="choices-privacy-status-input" className="form-label">Status</Label>
-                                        <select className="form-select" data-choices data-choices-search-false
-                                            id="choices-privacy-status-input">
-                                            <option defaultValue="Private">Private</option>
-                                            <option value="Team">Team</option>
-                                            <option value="Public">Public</option>
-                                        </select>
-                                    </div>
-                                </CardBody>
-                            </div>
+                            </Col>
 
-                            <div className="card">
-                                <div className="card-header">
-                                    <h5 className="card-title mb-0">Tags</h5>
+                            <Col lg={4}>
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h5 className="card-title mb-0">Privacy</h5>
+                                    </div>
+                                    <CardBody>
+                                        <div>
+                                            <Label htmlFor="choices-privacy-status-input" className="form-label">Status</Label>
+                                            <select 
+                                            className="form-select" 
+                                            data-choices 
+                                            data-choices-search-false
+                                            name="private"
+                                            onChange={validation.handleChange}
+                                            onBlur={validation.handleBlur}
+                                            value={validation.values.private || "Private"}
+                                                id="choices-privacy-status-input">
+                                                <option defaultValue="Private">Private</option>
+                                                <option value="Public">Public</option>
+                                            </select>
+
+                                            {validation.touched.private && validation.errors.private ? (
+                                                <FormFeedback type="invalid">{validation.errors.private}</FormFeedback>
+                                            ) : null}
+                                        </div>
+                                    </CardBody>
                                 </div>
-                                <CardBody>
-                                    <div className="mb-3">
-                                        <Label htmlFor="choices-categories-input" className="form-label">Categories</Label>
-                                        <select className="form-select" data-choices data-choices-search-false
-                                            id="choices-categories-input">
-                                            <option defaultValue="Designing">Designing</option>
-                                            <option value="Development">Development</option>
-                                        </select>
-                                    </div>
 
-                                    <div>
-                                        <Label htmlFor="choices-text-input" className="form-label">MultiSelect Test</Label>
-                                        <Select
-                                            value={selectedMulti}
-                                            isMulti={true}                                                            
-                                            onChange={(selectedMulti:any) => {
-                                                handleMulti(selectedMulti);
-                                            }}
-                                            options={SingleOptions}
-                                        />
+                                <div className="card">
+                                    <div className="card-header">
+                                        <h5 className="card-title mb-0">Tags</h5>
                                     </div>
-                                </CardBody>
-                            </div>
-                        </Col>
-                    </Row>
+                                    <CardBody>
+                                        <div className="mb-3">
+                                            <Label htmlFor="choices-categories-input" className="form-label">Categories</Label>
+                                            <select className="form-select" data-choices data-choices-search-false
+                                                id="choices-categories-input">
+                                                <option defaultValue="Designing">Designing</option>
+                                                <option value="Development">Development</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <Label htmlFor="choices-text-input" className="form-label">MultiSelect Test</Label>
+                                            <Select
+                                                value={selectedMulti}
+                                                isMulti={true}                                                            
+                                                onChange={(selectedMulti:any) => {
+                                                    handleMulti(selectedMulti);
+                                                }}
+                                                options={SingleOptions}
+                                            />
+                                        </div>
+                                    </CardBody>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Form>
                 </Container>
             </div>
         </React.Fragment>
     );
 };
 
-export default BlogCreateView;
+export default withRouter(BlogCreateView);
