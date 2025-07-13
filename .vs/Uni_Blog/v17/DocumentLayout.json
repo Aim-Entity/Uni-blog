@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\domain\\entities\\commententities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\commententities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\domain\\entities\\blogentities\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\blogentities\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\domain\\entities\\categoryentities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\categoryentities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBB440F6-00C6-401A-A885-2E915FE9646E}|Infrastructure\\Infrastructure.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBB440F6-00C6-401A-A885-2E915FE9646E}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBB440F6-00C6-401A-A885-2E915FE9646E}|Infrastructure\\Infrastructure.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\infrastructure\\repositories\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBB440F6-00C6-401A-A885-2E915FE9646E}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3F12A3BD-3AA7-4C94-99A1-2954EF0462F8}|Web\\Web.Server\\Web.Server.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\web\\web.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3F12A3BD-3AA7-4C94-99A1-2954EF0462F8}|Web\\Web.Server\\Web.Server.csproj|solutionrelative:web\\web.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\application\\services\\accountservices\\query\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|solutionrelative:application\\services\\accountservices\\query\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\application\\services\\accountservices\\query\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|solutionrelative:application\\services\\accountservices\\query\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\domain\\entities\\userentities\\customregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,6 +49,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\application\\services\\tagservices\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|solutionrelative:application\\services\\tagservices\\tagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +82,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\BlogEntities\\Blog.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\BlogEntities\\Blog.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\BlogEntities\\Blog.cs",
+              "RelativeToolTip": "Domain\\Entities\\BlogEntities\\Blog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:58:42.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CommentEntities\\Comment.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\CommentEntities\\Comment.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CommentEntities\\Comment.cs",
+              "RelativeToolTip": "Domain\\Entities\\CommentEntities\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:58:32.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CategoryEntities\\Category.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\CategoryEntities\\Category.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CategoryEntities\\Category.cs",
+              "RelativeToolTip": "Domain\\Entities\\CategoryEntities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:58:26.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:58:22.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BlogRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\BlogRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\BlogRepository.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\BlogRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\BlogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-13T09:58:21.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Web\\Web.Server\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Web\\Web.Server\\appsettings.Development.json",
@@ -75,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "RegisterCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs",
@@ -83,12 +168,11 @@
               "RelativeToolTip": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBoAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T14:31:28.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T14:31:28.41Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "RegisterCommand.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs",
@@ -96,12 +180,11 @@
               "RelativeToolTip": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T14:31:27.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T14:31:27.674Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CustomRegisterRequest.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\UserEntities\\CustomRegisterRequest.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserEntities\\CustomRegisterRequest.cs",
@@ -109,12 +192,11 @@
               "RelativeToolTip": "Domain\\Entities\\UserEntities\\CustomRegisterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T14:22:43.411Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T14:22:43.411Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\UserEntities\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserEntities\\User.cs",
@@ -122,12 +204,11 @@
               "RelativeToolTip": "Domain\\Entities\\UserEntities\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T14:22:42.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T14:22:42.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "ConfigureServices.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\ConfigureServices.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ConfigureServices.cs",
@@ -135,12 +216,11 @@
               "RelativeToolTip": "Infrastructure\\ConfigureServices.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T13:45:05.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T13:45:05.242Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ConfigureService.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\ConfigureService.cs",
               "RelativeDocumentMoniker": "Application\\ConfigureService.cs",
@@ -148,12 +228,11 @@
               "RelativeToolTip": "Application\\ConfigureService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T13:43:47.47Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T13:43:47.47Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Web\\Web.Server\\Program.cs",
               "RelativeDocumentMoniker": "Web\\Web.Server\\Program.cs",
@@ -161,12 +240,11 @@
               "RelativeToolTip": "Web\\Web.Server\\Program.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-06T13:38:44.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T13:38:44.954Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "TagService.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\TagServices\\TagService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\TagServices\\TagService.cs",
@@ -174,8 +252,7 @@
               "RelativeToolTip": "Application\\Services\\TagServices\\TagService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T15:15:37.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T15:15:37.703Z"
             }
           ]
         }

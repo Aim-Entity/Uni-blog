@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Services.BlogServices.Command.CreateBlog;
 using Application.Services.BlogServices.Query.GetAllBlogs;
 using Domain.Entities.BlogEntities;
 using MediatR;
@@ -22,6 +23,11 @@ namespace Application.Services.BlogServices
         public async Task<IEnumerable<Blog>> GetAll()
         {
             return await _sender.Send(new GetAllBlogsQuery());
+        }
+
+        public async Task<Blog> Create(Blog blog)
+        {
+            return await _sender.Send(new CreateBlogCommand(blog));
         }
     }
 }

@@ -7,11 +7,13 @@ import { configureStore } from "@reduxjs/toolkit";
 // Authentication
 import LoginReducer from "./auth/login/reducer";
 import AccountReducer from "./auth/register/reducer";
+import BlogReducer from "./blog/reducer";
 
 const rootReducer = combineReducers({
     // Layout: LayoutReducer,
     Login: LoginReducer,
     Account: AccountReducer,
+    Blog: BlogReducer,
 });
 
 export const store = configureStore({ reducer: rootReducer, devTools: true });

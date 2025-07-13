@@ -30,11 +30,8 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("CategoryId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("Author")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -47,7 +44,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ThumbnailImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -56,14 +52,10 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Category", b =>
+            modelBuilder.Entity("Domain.Entities.CategoryEntities.Category", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +72,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Comment", b =>
+            modelBuilder.Entity("Domain.Entities.CommentEntities.Comment", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,8 +80,8 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("AuthorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Author")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<long?>("BlogId")
                         .HasColumnType("bigint");
@@ -99,14 +91,12 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
-
                     b.HasIndex("BlogId");
 
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Tag", b =>
+            modelBuilder.Entity("Domain.Entities.TagEntities.Tag", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,16 +104,11 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<long?>("BlogId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
 
                     b.ToTable("Tags");
                 });
@@ -342,40 +327,10 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Blog", b =>
+            modelBuilder.Entity("Domain.Entities.CommentEntities.Comment", b =>
                 {
-                    b.HasOne("Domain.Entities.UserEntities.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
-                    b.HasOne("Domain.Entities.BlogEntities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Comment", b =>
-                {
-                    b.HasOne("Domain.Entities.UserEntities.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
-
                     b.HasOne("Domain.Entities.BlogEntities.Blog", null)
                         .WithMany("Comments")
-                        .HasForeignKey("BlogId");
-
-                    b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("Domain.Entities.BlogEntities.Tag", b =>
-                {
-                    b.HasOne("Domain.Entities.BlogEntities.Blog", null)
-                        .WithMany("Tags")
                         .HasForeignKey("BlogId");
                 });
 
@@ -433,8 +388,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.BlogEntities.Blog", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@ using Domain.Exceptions.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Application.Services.AccountServices.Query.Register;
+namespace Application.Services.AccountServices.Command.Register;
 
 public class RegisterCommandHandler : IRequestHandler<RegisterCommand, User>
 {

@@ -10,7 +10,7 @@ namespace Domain.Entities.CommentEntities
     public class Comment
     {
         public long Id { get; set; }
-        public User Author { get; set; }
+        public Guid Author { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
     }
 }

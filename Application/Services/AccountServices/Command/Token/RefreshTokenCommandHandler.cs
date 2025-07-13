@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Shared.Options;
 
-namespace Application.Services.AccountServices.Query.Token;
+namespace Application.Services.AccountServices.Command.Token;
 
 public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand>
 {

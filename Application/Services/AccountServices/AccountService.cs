@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces;
-using Application.Services.AccountServices.Query.LoginUser;
-using Application.Services.AccountServices.Query.Register;
-using Application.Services.AccountServices.Query.Token;
+using Application.Services.AccountServices.Command.LoginUser;
+using Application.Services.AccountServices.Command.Register;
+using Application.Services.AccountServices.Command.Token;
 using Domain.Entities.UserEntities;
 using MediatR;
 using System;

@@ -14,7 +14,7 @@ export const isUserAuthenticated = () => {
   return getLoggedInUser() !== null;
 };
 
-//MVP Auth
+//Auth
 type LoginType = {
   email: string,
   password: string,
@@ -28,8 +28,18 @@ type RegisterType = {
   confirm_password: string
 }
 
+type blogCreateType = {
+    title: string,
+    description: string,
+    thumbnail: string,
+    private: boolean,
+}
+
 export const postLoginUser = (user: LoginType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomLogin", user, {
   withCredentials: true
 });
 
 export const postRegisterUser = (user: RegisterType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomRegister", user);
+
+//Blog
+export const postBlogCreate = (blog: blogCreateType) => api.create("https://localhost:7178/api/Blog/Create", blog);

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Shared.Options;
 
-namespace Application.Services.AccountServices.Query.LoginUser;
+namespace Application.Services.AccountServices.Command.LoginUser;
 
 public class LoginCommandHandler : IRequestHandler<LoginCommand, User>
 {

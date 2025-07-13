@@ -11,5 +11,7 @@ namespace Application.Interfaces.Repositories
     public interface IBlogRepository
     {
         public Task<IEnumerable<Blog>> GetAll();
+
+        public Task<Blog> Create(Blog blog);
     }
 }

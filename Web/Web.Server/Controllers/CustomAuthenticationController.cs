@@ -26,7 +26,7 @@ namespace Web.Server.Controllers
             return Ok(new 
             { 
                 data = new {
-                    email = res.Email,  name = res.ToString(), token = res.RefreshToken,
+                    email = res.Email, name = res.ToString(), token = res.RefreshToken
                 },
                 status = "success"
             });
@@ -40,7 +40,7 @@ namespace Web.Server.Controllers
 
             return Ok(new
             {
-                data = new { email = res.Email, name = res.ToString()},
+                data = new { email = res.Email, name = res.ToString(), userId = res.Id},
                 status = "success"
             });
         }

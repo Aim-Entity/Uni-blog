@@ -1,57 +1,44 @@
-import React,{useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardBody, CardHeader, Col, Container, Form, FormFeedback, Input, Label, Row } from 'reactstrap';
+import React, {useState} from 'react';
+import { Card, CardBody, Col, Container, Form, FormFeedback, Input, Label, Row } from 'reactstrap';
 //Import Flatepicker
-import Select from "react-select";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import * as Yup from "yup";
 
-import Dropzone from "react-dropzone";
-
 //Import Images
 import { useFormik } from 'formik';
 import withRouter from '../../../Components/Common/withRouter';
+import { useDispatch } from 'react-redux';
+import { createBlog } from '../../../slices/thunks';
+import { GetUserId } from '../../../utils/UserCookies';
 
 
-const BlogCreateView = () => {
-    const SingleOptions = [
-        { value: 'Watches', label: 'Watches' },
-        { value: 'Headset', label: 'Headset' },
-        { value: 'Sweatshirt', label: 'Sweatshirt' },
-        { value: '20% off', label: '20% off' },
-        { value: '4 star', label: '4 star' },
-    ];
-
+const BlogCreateView = (props : any) => {
     type blogDraftType = {
         title: string,
         description: string,
+        thumbnailImage: string | ArrayBuffer | null,
         private: boolean,
-        tags: string[],
     }
+
+    const dispatch : any = useDispatch();
 
     const [blogDraft, setBlogDraft] = useState<blogDraftType>({
         title: "",
         description: "",
+        thumbnailImage: "",
         private: true,
-        tags: [""],
     });
-
-    const [selectedMulti, setselectedMulti] = useState<any>(null);
-
-    const [fileBase64, setFileBase64] = useState();
-      
-
-    const handleMulti = (selectedMulti:any) => {
-        setselectedMulti(selectedMulti);
-    }  
 
     const validation : any = useFormik({
         // enableReinitialize : use this flag when initial values needs to be changed
         enableReinitialize: true,
 
         initialValues: {
+            author: GetUserId(),
             title: blogDraft.title || '',
+            description: blogDraft.description || '',
+            thumbnailImage: blogDraft.thumbnailImage || '',
             private: blogDraft.private || 'Private',
         },
         validationSchema: Yup.object({
@@ -59,8 +46,9 @@ const BlogCreateView = () => {
             private: Yup.string().required("Please Enter Blog Privacy"),
         }),
         onSubmit: (values) => {
-            setBlogDraft({...blogDraft, title: validation.values.title, private: validation.values.private == "Private" ? true : false});
-            console.log(blogDraft);
+            values.description = blogDraft.description;
+            console.log(values);
+            dispatch(createBlog(values, props.router.navigate));
         }
     });
 
@@ -68,7 +56,8 @@ const BlogCreateView = () => {
         console.log(e.target.files);
         const data = new FileReader();
         data.addEventListener("load", () => {
-            setFileBase64(data.result);
+            setBlogDraft({...blogDraft, thumbnailImage: data.result});
+            validation.values.thumbnailImage = blogDraft.thumbnailImage;
         });
 
         data.readAsDataURL(e.target.files[0]);
@@ -82,7 +71,7 @@ const BlogCreateView = () => {
                 <Container fluid>
                     <Form onSubmit={(e) => {
                         e.preventDefault();
-                        validation.handleSubmit();
+                        validation.handleSubmit(e);
                         console.log(validation)
                         return false;
                     }}
@@ -96,9 +85,12 @@ const BlogCreateView = () => {
                                             <Input 
                                                 type="text" 
                                                 className="form-control" 
-                                                name="title"
                                                 placeholder="Enter project title" 
-                                                onChange={validation.handleChange}
+                                                name="title"
+                                                onChange={(e) => {
+                                                    setBlogDraft({...blogDraft, title: validation.values.title});
+                                                    validation.handleChange(e);
+                                                }}
                                                 onBlur={validation.handleBlur}
                                                 value={validation.values.title || ""}
                                                 invalid={
@@ -112,15 +104,21 @@ const BlogCreateView = () => {
                                         </div>
 
                                         <div className="mb-3">
-                                            <Label className="form-label" htmlFor="thumbnail">Thumbnail Image</Label>
+                                            <Label className="form-label" htmlFor="thumbnailImage">Thumbnail Image</Label>
                                             <Input 
                                                 className="form-control" 
-                                                name="thumbnail" 
+                                                name="thumbnailImage" 
                                                 type="file" 
                                                 accept="image/png, image/gif, image/jpeg" 
-                                                onChange={onFileChange}
+                                                onChange={(e) => {
+                                                    onFileChange(e);
+                                                    validation.handleChange(e);
+                                                }}
+                                                onBlur={validation.handleBlur}
+                                                invalid={
+                                                    validation.touched.thumbnailImage && validation.errors.thumbnailImage ? true : false
+                                                }
                                             />
-
                                         </div>
 
                                         <div className="mb-3">
@@ -135,8 +133,14 @@ const BlogCreateView = () => {
                                                 onChange={(event, editor) => {
                                                     const data = editor.getData();
                                                     setBlogDraft({...blogDraft, description: data})
+                                                    validation.handleChange("description", event);
                                                 }}
-                                                />
+                                                value={validation.values.description || ""}
+                                                onBlur={validation.handleBlur("description")}
+                                                invalid={
+                                                    validation.touched.description && validation.errors.description ? true : false
+                                                }
+                                            />
                                         </div>
                                     </CardBody>
                                 </Card>
@@ -170,34 +174,6 @@ const BlogCreateView = () => {
                                             {validation.touched.private && validation.errors.private ? (
                                                 <FormFeedback type="invalid">{validation.errors.private}</FormFeedback>
                                             ) : null}
-                                        </div>
-                                    </CardBody>
-                                </div>
-
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h5 className="card-title mb-0">Tags</h5>
-                                    </div>
-                                    <CardBody>
-                                        <div className="mb-3">
-                                            <Label htmlFor="choices-categories-input" className="form-label">Categories</Label>
-                                            <select className="form-select" data-choices data-choices-search-false
-                                                id="choices-categories-input">
-                                                <option defaultValue="Designing">Designing</option>
-                                                <option value="Development">Development</option>
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                            <Label htmlFor="choices-text-input" className="form-label">MultiSelect Test</Label>
-                                            <Select
-                                                value={selectedMulti}
-                                                isMulti={true}                                                            
-                                                onChange={(selectedMulti:any) => {
-                                                    handleMulti(selectedMulti);
-                                                }}
-                                                options={SingleOptions}
-                                            />
                                         </div>
                                     </CardBody>
                                 </div>

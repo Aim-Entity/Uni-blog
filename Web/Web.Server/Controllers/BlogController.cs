@@ -22,5 +22,12 @@ namespace Web.Server.Controllers
         {
             return await _blogService.GetAll();
         }
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<Blog> Create(Blog Blog)
+        {
+            return await _blogService.Create(Blog);
+        }
     }
 }

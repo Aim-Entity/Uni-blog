@@ -22,5 +22,12 @@ namespace Infrastructure.Repositories
         {
             return _context.Blogs;
         }
+
+        public async Task<Blog> Create(Blog blog)
+        {
+            await _context.Blogs.AddAsync(blog);
+            await  _context.SaveChangesAsync();
+            return blog;
+        }
     }
 }
