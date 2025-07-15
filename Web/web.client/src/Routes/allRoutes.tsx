@@ -13,7 +13,7 @@ const publicRoutes = [
   { path: "/register", component: <Register /> },
   { path: "/blog-list", component: <BlogListView /> },
   { path: "/blog-create", component: <BlogCreateView /> },
-  { path: "/blog-overview", component: <BlogOverviewView /> },
+  { path: "/blog-overview/:blogId", component: <BlogOverviewView /> },
 ];
 
 export { protectedRoutes, publicRoutes };

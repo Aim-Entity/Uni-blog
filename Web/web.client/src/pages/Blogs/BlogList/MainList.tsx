@@ -12,6 +12,7 @@ const MainList = () => {
     const dispatch = useDispatch<any>();
 
     type blogType = {
+        id: number,
         title: string,
         description: string,
         thumbnailImage: string | ArrayBuffer | null,
@@ -158,7 +159,7 @@ const MainList = () => {
                                         </div>
                                         <div className="col-xxl-9 col-lg-7">
                                             {/* <p className="mb-2 text-primary text-uppercase">{item.category}</p> */}
-                                            <Link to="/blog-overview">
+                                            <Link to={`/blog-overview/${item.id}`}>
                                                 <h5 className="fs-15 fw-semibold">{item.title}</h5>
                                             </Link>
                                             <div className="d-flex align-items-center gap-2 mb-3 flex-wrap">
