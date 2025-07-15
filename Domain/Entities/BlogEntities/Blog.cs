@@ -15,12 +15,12 @@ namespace Domain.Entities.BlogEntities
     {
         public long Id { get; set; }
         public Guid Author { get; set; }
+        public string AuthorName { get; set; } = "";
         public string Title { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public string? ThumbnailImage { get; set; }
         public string Description { get; set; }
         public BlogStatusEnum Status { get; set; }
         public List<Comment>? Comments {  get; set; } = new List<Comment>();
-
     }
 }

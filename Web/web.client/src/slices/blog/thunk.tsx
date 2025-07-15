@@ -1,29 +1,28 @@
 //Include Both Helper File with needed methods
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  postBlogCreate,
+  postBlogCreate, getAllBlogs
 } from "../../helpers/fakebackend_helper";
 
-export const createBlog = (blog : any, history : any) => async (dispatch : any) => {
+export const createBlog = (blog : any, history : any) => async () => {
   try {
     let response;
 
     response = await postBlogCreate(blog);
 
-    // if (response) {
-    //   sessionStorage.setItem("authUser", JSON.stringify(response));
-
-    //   var finallogin : any = JSON.stringify(response);
-    //   finallogin = JSON.parse(finallogin)
-    //   response = finallogin.data;
-    //   if (finallogin.status === "success") {
-    //     dispatch(loginSuccess(response));
-    //     history('/blog-list')
-    //   } 
-    //   else {
-    //     dispatch(apiError(finallogin));
-    //   }
-    // }
+    history('/blog-list')
   } catch (error) {
-    dispatch(apiError(error));
+    console.log(error);
   }
 };
+
+export const allBlogs = createAsyncThunk("dashboardMVP/allBlogs", async () => {
+    try{
+        let response;
+        response = await getAllBlogs();
+        return response;
+    }
+    catch (error){
+        return error;
+    }
+});

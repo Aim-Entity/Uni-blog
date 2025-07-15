@@ -3,9 +3,42 @@ import { Link } from 'react-router-dom'
 import { Card, CardBody, Col, Row } from 'reactstrap'
 
 import blog4 from "../../../assets/images/blog/img-4.jpg"
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createSelector } from '@reduxjs/toolkit'
+import { allBlogs } from '../../../slices/thunks'
 
 const MainList = () => {
+    const dispatch = useDispatch<any>();
+
+    type blogType = {
+        title: string,
+        description: string,
+        thumbnailImage: string | ArrayBuffer | null,
+        status: boolean,
+        author: string,
+        authorName: string,
+        dateCreated: string,
+
+    }
+
+    const [blogs, setBlogs] = useState<blogType[]>([]);
+
+    const selectBlogs = createSelector(
+        (slice) => slice.Blog,
+        (state) => state.blogs
+    );
+
+    const blogsData = useSelector(selectBlogs);
+
+    useEffect(() => {
+        dispatch(allBlogs());
+    }, [dispatch]);
+
+    useEffect(() => {
+        setBlogs(blogsData);
+    }, [blogsData]);
+
     const dummyData = [
         {
             "image": blog4,
@@ -109,29 +142,35 @@ const MainList = () => {
                 </div>
 
                 <Row className='gx-4'>
-                    {currentdata.map((item, idx) => (
+                    {blogs.map((item, idx) => (
                         <Col xxl={12} key={idx}>
                             <Card>
                                 <CardBody>
                                     <div className="row g-4">
                                         <div className="col-xxl-3 col-lg-5">
-                                            <img src={item.image} alt="" className="img-fluid rounded w-100 object-fit-cover" />
+                                            {item.thumbnailImage && (
+                                                <img src={item.thumbnailImage} alt="" className="img-fluid rounded w-100 object-fit-cover" />
+                                            )}
+
+                                            {!item.thumbnailImage && (
+                                                <div className="img-fluid rounded w-100 h-100 object-fit-cover bg-dark d-flex justify-content-center align-items-center"><h3 className="text-white">No Thumbnail</h3></div>
+                                            )}
                                         </div>
                                         <div className="col-xxl-9 col-lg-7">
-                                            <p className="mb-2 text-primary text-uppercase">{item.category}</p>
+                                            {/* <p className="mb-2 text-primary text-uppercase">{item.category}</p> */}
                                             <Link to="/blog-overview">
                                                 <h5 className="fs-15 fw-semibold">{item.title}</h5>
                                             </Link>
                                             <div className="d-flex align-items-center gap-2 mb-3 flex-wrap">
-                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {item.date}</span> | <span className="text-muted"><i className="ri-eye-line me-1"></i> {item.views}</span> | <span className='text-primary'><i className="ri-user-3-line me-1"></i> Admin</span>
+                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {item.dateCreated}</span> | <span className='text-primary'><i className="ri-user-3-line me-1"></i> {item.authorName}</span>
                                             </div>
                                             <p className="text-muted mb-2">{item.description}</p>
                                             <Link to="/blog-overview" className="text-decoration-underline">Read more <i className="ri-arrow-right-line"></i></Link>
-                                            <div className="d-flex align-items-center gap-2 mt-3 flex-wrap">
+                                            {/* <div className="d-flex align-items-center gap-2 mt-3 flex-wrap">
                                                 {item.tags.map((item, idx) => (
                                                     <Link to="#!" key={idx} className="badge text-success bg-success-subtle">{item}</Link>
                                                 ))}
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </CardBody>

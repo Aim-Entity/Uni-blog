@@ -43,3 +43,4 @@ export const postRegisterUser = (user: RegisterType) => api.create("https://loca
 
 //Blog
 export const postBlogCreate = (blog: blogCreateType) => api.create("https://localhost:7178/api/Blog/Create", blog);
+export const getAllBlogs = () => api.get("https://localhost:7178/api/Blog/Blogs");

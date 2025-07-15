@@ -23,10 +23,13 @@ namespace Web.Server.Controllers
         {
             var res = await _accountService.RegisterAsync(registerRequest);
 
-            return Ok(new 
-            { 
-                data = new {
-                    email = res.Email, name = res.ToString(), token = res.RefreshToken
+            return Ok(new
+            {
+                data = new
+                {
+                    email = res.Email,
+                    name = res.ToString(),
+                    token = res.RefreshToken
                 },
                 status = "success"
             });
@@ -40,7 +43,7 @@ namespace Web.Server.Controllers
 
             return Ok(new
             {
-                data = new { email = res.Email, name = res.ToString(), userId = res.Id},
+                data = new { email = res.Email, name = res.ToString(), userId = res.Id },
                 status = "success"
             });
         }

@@ -10,7 +10,7 @@ import { useFormik } from 'formik';
 import withRouter from '../../../Components/Common/withRouter';
 import { useDispatch } from 'react-redux';
 import { createBlog } from '../../../slices/thunks';
-import { GetUserId } from '../../../utils/UserCookies';
+import { GetUserId, GetUserName } from '../../../utils/UserCookies';
 
 
 const BlogCreateView = (props : any) => {
@@ -36,6 +36,7 @@ const BlogCreateView = (props : any) => {
 
         initialValues: {
             author: GetUserId(),
+            authorName: GetUserName(),
             title: blogDraft.title || '',
             description: blogDraft.description || '',
             thumbnailImage: blogDraft.thumbnailImage || '',
@@ -47,7 +48,6 @@ const BlogCreateView = (props : any) => {
         }),
         onSubmit: (values) => {
             values.description = blogDraft.description;
-            console.log(values);
             dispatch(createBlog(values, props.router.navigate));
         }
     });
