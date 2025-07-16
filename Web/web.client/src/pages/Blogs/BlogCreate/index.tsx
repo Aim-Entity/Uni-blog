@@ -40,11 +40,11 @@ const BlogCreateView = (props : any) => {
             title: blogDraft.title || '',
             description: blogDraft.description || '',
             thumbnailImage: blogDraft.thumbnailImage || '',
-            private: blogDraft.private || 'Private',
+            status: blogDraft.private || 'Private',
         },
         validationSchema: Yup.object({
             title: Yup.string().required("Please Enter Blog Title"),
-            private: Yup.string().required("Please Enter Blog Privacy"),
+            status: Yup.string().required("Please Enter Blog Privacy"),
         }),
         onSubmit: (values) => {
             values.description = blogDraft.description;
@@ -88,15 +88,17 @@ const BlogCreateView = (props : any) => {
                                                 placeholder="Enter project title" 
                                                 name="title"
                                                 onChange={(e) => {
-                                                    setBlogDraft({...blogDraft, title: validation.values.title});
+                                                    // setBlogDraft({...blogDraft, title: validation.values.title});
                                                     validation.handleChange(e);
                                                 }}
                                                 onBlur={validation.handleBlur}
-                                                value={validation.values.title || ""}
+                                                value={validation.values.title}
                                                 invalid={
                                                     validation.touched.title && validation.errors.title ? true : false
                                                 }
                                             />
+
+                                            {validation.values.title}
 
                                             {validation.touched.title && validation.errors.title ? (
                                                 <FormFeedback type="invalid">{validation.errors.title}</FormFeedback>
@@ -162,17 +164,17 @@ const BlogCreateView = (props : any) => {
                                             className="form-select" 
                                             data-choices 
                                             data-choices-search-false
-                                            name="private"
+                                            name="status"
                                             onChange={validation.handleChange}
                                             onBlur={validation.handleBlur}
-                                            value={validation.values.private || "Private"}
+                                            value={validation.values.status || "Private"}
                                                 id="choices-privacy-status-input">
                                                 <option defaultValue="Private">Private</option>
                                                 <option value="Public">Public</option>
                                             </select>
 
-                                            {validation.touched.private && validation.errors.private ? (
-                                                <FormFeedback type="invalid">{validation.errors.private}</FormFeedback>
+                                            {validation.touched.status && validation.errors.status ? (
+                                                <FormFeedback type="invalid">{validation.errors.status}</FormFeedback>
                                             ) : null}
                                         </div>
                                     </CardBody>

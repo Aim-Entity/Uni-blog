@@ -10,5 +10,6 @@ namespace Application.Interfaces.Repositories
     public interface ICommentRepository
     {
         public Task<IEnumerable<Comment>> GetAll();
+        public Task<Comment> Create(Comment comment);
     }
 }

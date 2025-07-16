@@ -22,5 +22,12 @@ namespace Infrastructure.Repositories
         {
             return _context.Comments;
         }
+
+        public async Task<Comment> Create(Comment comment)
+        {
+            await _context.Comments.AddAsync(comment);
+            await  _context.SaveChangesAsync();
+            return comment;
+        }
     }
 }

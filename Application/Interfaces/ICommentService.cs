@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface ICommentService
     {
         public Task<IEnumerable<Comment>> GetAll();
-        // public Task<Comment> CreateNew();
+        public Task<Comment> Create(Comment comment);
     }
 }

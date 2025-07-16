@@ -22,5 +22,13 @@ namespace Web.Server.Controllers
         {
             return await _commentService.GetAll();
         }
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<Comment> Create(Comment comment)
+        {
+            return await _commentService.Create(comment);
+        }
+
     }
 }
