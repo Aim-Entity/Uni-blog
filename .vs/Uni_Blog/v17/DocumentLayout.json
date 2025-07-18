@@ -3,6 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\application\\services\\commentservices\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|solutionrelative:application\\services\\commentservices\\commentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\application\\interfaces\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B9437E7-76A6-4A78-B0C1-BC0801CD5B56}|Application\\Application.csproj|solutionrelative:application\\interfaces\\icommentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|c:\\users\\bilaluddin\\source\\repos\\uni_blog\\domain\\entities\\commententities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B6230CD-3703-4CA1-826F-8ED6D26EA382}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\commententities\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -69,6 +80,19 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ICommentService.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Interfaces\\ICommentService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\ICommentService.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Interfaces\\ICommentService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\ICommentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T20:43:53.332Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
@@ -82,7 +106,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "CommentService.cs",
+              "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\CommentServices\\CommentService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\CommentServices\\CommentService.cs",
+              "ToolTip": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\CommentServices\\CommentService.cs",
+              "RelativeToolTip": "Application\\Services\\CommentServices\\CommentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T20:43:41.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAJYTAAAAAAAAAAAWwKoTAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-07-17T17:22:50.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Blog.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\BlogEntities\\Blog.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\BlogEntities\\Blog.cs",
@@ -90,12 +140,11 @@
               "RelativeToolTip": "Domain\\Entities\\BlogEntities\\Blog.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T09:58:42.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T09:58:42.511Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Comment.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CommentEntities\\Comment.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CommentEntities\\Comment.cs",
@@ -103,12 +152,11 @@
               "RelativeToolTip": "Domain\\Entities\\CommentEntities\\Comment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T09:58:32.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T09:58:32.945Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\CategoryEntities\\Category.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\CategoryEntities\\Category.cs",
@@ -116,12 +164,11 @@
               "RelativeToolTip": "Domain\\Entities\\CategoryEntities\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T09:58:26.631Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T09:58:26.631Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\CategoryRepository.cs",
@@ -129,12 +176,11 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\CategoryRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T09:58:22.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T09:58:22.709Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "BlogRepository.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\Repositories\\BlogRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\BlogRepository.cs",
@@ -142,12 +188,11 @@
               "RelativeToolTip": "Infrastructure\\Repositories\\BlogRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-13T09:58:21.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-13T09:58:21.834Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Web\\Web.Server\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Web\\Web.Server\\appsettings.Development.json",
@@ -155,12 +200,11 @@
               "RelativeToolTip": "Web\\Web.Server\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-06T14:35:36.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-06T14:35:36.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "RegisterCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommandHandler.cs",
@@ -172,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "RegisterCommand.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AccountServices\\Query\\Register\\RegisterCommand.cs",
@@ -184,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "CustomRegisterRequest.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\UserEntities\\CustomRegisterRequest.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserEntities\\CustomRegisterRequest.cs",
@@ -196,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Domain\\Entities\\UserEntities\\User.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserEntities\\User.cs",
@@ -208,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ConfigureServices.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Infrastructure\\ConfigureServices.cs",
               "RelativeDocumentMoniker": "Infrastructure\\ConfigureServices.cs",
@@ -220,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "ConfigureService.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\ConfigureService.cs",
               "RelativeDocumentMoniker": "Application\\ConfigureService.cs",
@@ -232,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Web\\Web.Server\\Program.cs",
               "RelativeDocumentMoniker": "Web\\Web.Server\\Program.cs",
@@ -244,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "TagService.cs",
               "DocumentMoniker": "C:\\Users\\BilalUddin\\source\\repos\\Uni_Blog\\Application\\Services\\TagServices\\TagService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\TagServices\\TagService.cs",

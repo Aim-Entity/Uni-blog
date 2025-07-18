@@ -9,6 +9,7 @@ import SimpleBar from 'simplebar-react';
 import { allBlogs } from '../../../slices/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
+import HorizontalLayout from '../../../Layouts/HorizontalLayout';
 
 const BlogOverviewView = () => {
     const {blogId} = useParams()
@@ -59,8 +60,9 @@ const BlogOverviewView = () => {
 
     return (
         <React.Fragment>
-            <div className="page-content">
+            <div className="">
                 <Container fluid>
+                    <HorizontalLayout />
                     <div className="row justify-content-center">
                         <div className="col-xxl-10">
                             <div className="card">

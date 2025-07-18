@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row } from 'reactstrap'
 import Sidepanel from './Sidepanel'
 import MainList from './MainList'
+import HorizontalLayout from '../../../Layouts/HorizontalLayout'
 
 const BlogListView = () => {
 
@@ -9,8 +10,8 @@ const BlogListView = () => {
 
     return (
         <React.Fragment>
-            <div className="page-content">
                 <Container fluid>
+                    <HorizontalLayout />
                     <Row>
 
                         <Sidepanel />
@@ -19,7 +20,6 @@ const BlogListView = () => {
 
                     </Row>
                 </Container>
-            </div>
         </React.Fragment>
     )
 }

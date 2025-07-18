@@ -11,6 +11,7 @@ import withRouter from '../../../Components/Common/withRouter';
 import { useDispatch } from 'react-redux';
 import { createBlog } from '../../../slices/thunks';
 import { GetUserId, GetUserName } from '../../../utils/UserCookies';
+import HorizontalLayout from '../../../Layouts/HorizontalLayout';
 
 
 const BlogCreateView = (props : any) => {
@@ -67,8 +68,8 @@ const BlogCreateView = (props : any) => {
 
     return (
         <React.Fragment>
-            <div className="page-content">
                 <Container fluid>
+                    <HorizontalLayout />
                     <Form onSubmit={(e) => {
                         e.preventDefault();
                         validation.handleSubmit(e);
@@ -183,7 +184,6 @@ const BlogCreateView = (props : any) => {
                         </Row>
                     </Form>
                 </Container>
-            </div>
         </React.Fragment>
     );
 };

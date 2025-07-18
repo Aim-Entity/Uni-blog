@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.CommentEntities;
+using Shared.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Application.Interfaces.Repositories
     public interface ICommentRepository
     {
         public Task<IEnumerable<Comment>> GetAll();
-        public Task<Comment> Create(Comment comment);
+        public Task<IEnumerable<Comment>> GetAllWithBlogId(long blogId);
+        public Task<CreateCommentDto> Create(CreateCommentDto comment);
     }
 }

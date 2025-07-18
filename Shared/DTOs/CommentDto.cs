@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Shared.DTOs
 {
-    internal class CommentDto
+    public class CreateCommentDto
     {
+        public long BlogId { get; set; }
+        public Guid AuthorId { get; set; }
+        public string Message { get; set; }
     }
 }

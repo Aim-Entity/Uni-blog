@@ -44,8 +44,8 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsPrivate")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ThumbnailImage")
                         .HasColumnType("nvarchar(max)");
@@ -84,16 +84,22 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<Guid>("Author")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<long?>("BlogId")
+                    b.Property<long>("BlogId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("BlogId");
 
@@ -333,9 +339,17 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.CommentEntities.Comment", b =>
                 {
+                    b.HasOne("Domain.Entities.UserEntities.User", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
                     b.HasOne("Domain.Entities.BlogEntities.Blog", null)
                         .WithMany("Comments")
-                        .HasForeignKey("BlogId");
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

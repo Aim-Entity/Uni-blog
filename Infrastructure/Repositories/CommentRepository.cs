@@ -1,6 +1,8 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities.CommentEntities;
 using Infrastructure.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
+using Shared.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +22,19 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Comment>> GetAll()
         {
-            return _context.Comments;
+            return _context.Comments.Include(c => c.Author);
+        }
+        
+        public async Task<IEnumerable<Comment>> GetAllWithBlogId(long blogId)
+        {
+            return _context.Comments.Where(c => c.BlogId == blogId).Include(c => c.Author);
         }
 
-        public async Task<Comment> Create(Comment comment)
+        public async Task<CreateCommentDto> Create(CreateCommentDto comment)
         {
-            await _context.Comments.AddAsync(comment);
-            await  _context.SaveChangesAsync();
+            var author = await _context.Users.FirstOrDefaultAsync(u => u.Id == comment.AuthorId.ToString());
+            _context.Comments.Add(new Comment { BlogId = comment.BlogId, Author = author, Message = comment.Message });
+            await _context.SaveChangesAsync();
             return comment;
         }
     }

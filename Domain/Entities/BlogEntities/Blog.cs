@@ -20,7 +20,7 @@ namespace Domain.Entities.BlogEntities
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public string? ThumbnailImage { get; set; }
         public string Description { get; set; }
-        public BlogStatusEnum Status { get; set; }
+        public bool IsPrivate { get; set; }
         public List<Comment>? Comments {  get; set; } = new List<Comment>();
     }
 }

@@ -6,14 +6,15 @@ import BlogOverviewView from "../pages/Blogs/BlogOverview";
 
 
 const protectedRoutes = [
+  { path: "/blog-list", component: <BlogListView /> },
+  { path: "/blog-create", component: <BlogCreateView /> },
+  { path: "/blog-overview/:blogId", component: <BlogOverviewView /> },
+
 ];
 
 const publicRoutes = [
   { path: "/login", component: <Login /> },
   { path: "/register", component: <Register /> },
-  { path: "/blog-list", component: <BlogListView /> },
-  { path: "/blog-create", component: <BlogCreateView /> },
-  { path: "/blog-overview/:blogId", component: <BlogOverviewView /> },
 ];
 
 export { protectedRoutes, publicRoutes };

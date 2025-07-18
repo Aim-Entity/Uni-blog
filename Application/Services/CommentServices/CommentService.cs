@@ -1,8 +1,10 @@
 ﻿using Application.Interfaces;
 using Application.Services.CommentServices.Command.CreateComment;
 using Application.Services.CommentServices.Query.GetAllComments;
+using Application.Services.CommentServices.Query.GetAllCommentWthBlogId;
 using Domain.Entities.CommentEntities;
 using MediatR;
+using Shared.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,13 @@ namespace Application.Services.CommentServices
         {
             return await _sender.Send(new GetAllCommentsQuery());
         }
-        public async Task<Comment> Create(Comment comment)
+
+        public async Task<IEnumerable<Comment>> AllCommentWthBlogId(long blogId)
+        {
+            return await _sender.Send(new GetAllCommentWthBlogIdQuery(blogId));
+        }
+
+        public async Task<CreateCommentDto> Create(CreateCommentDto comment)
         {
             return await _sender.Send(new CreateCommentCommand(comment));
         }

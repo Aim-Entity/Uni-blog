@@ -2,6 +2,7 @@ using Application.Interfaces;
 using Domain.Entities.CommentEntities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shared.DTOs;
 
 namespace Web.Server.Controllers
 {
@@ -23,9 +24,16 @@ namespace Web.Server.Controllers
             return await _commentService.GetAll();
         }
 
+        [HttpGet]
+        [Route("AllCommentWthBlogId")]
+        public async Task<IEnumerable<Comment>> AllCommentWthBlogId(long blogId)
+        {
+            return await _commentService.AllCommentWthBlogId(blogId);
+        }
+
         [HttpPost]
         [Route("Create")]
-        public async Task<Comment> Create(Comment comment)
+        public async Task<CreateCommentDto> Create(CreateCommentDto comment)
         {
             return await _commentService.Create(comment);
         }

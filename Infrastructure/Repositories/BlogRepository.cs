@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities.BlogEntities;
 using Infrastructure.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Blog>> GetAll()
         {
-            return _context.Blogs;
+            return _context.Blogs.Include(b => b.Comments);
         }
 
         public async Task<Blog> Create(Blog blog)

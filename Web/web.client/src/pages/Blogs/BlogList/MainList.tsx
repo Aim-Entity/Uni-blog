@@ -23,7 +23,7 @@ const MainList = () => {
     }
 
     enum StatusEnum {
-        Public = tr,
+        Public,
         Private
     }
 
