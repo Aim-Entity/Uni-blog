@@ -119,14 +119,9 @@ const BlogOverviewView = () => {
                             <div className="card">
                                 <div className="card-body">
                                     <div className="text-center mb-4">
-                                        <p className="text-success text-uppercase mb-2">Art & Design</p>
+                                        <p className="text-success text-uppercase mb-2">Public Blog</p>
                                         <h4 className="mb-2">{currentBlog?.title}</h4>
-                                        <p className="text-muted mb-4">Public Blog</p>
-                                        <div className="d-flex align-items-center justify-content-center flex-wrap gap-2">
-                                            <span className="badge bg-primary-subtle text-primary">CraftedPerspectives</span>
-                                            <span className="badge bg-primary-subtle text-primary">DesignInspiration</span>
-                                            <span className="badge bg-primary-subtle text-primary">ArtAndDesign</span>
-                                        </div>
+                                        <p className="text-muted mb-4">{new Date(currentBlog?.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</p>
                                     </div>
                                     {currentBlog?.thumbnailImage && (
                                         <img src={currentBlog?.thumbnailImage} alt="" className="img-thumbnail w-50 mx-auto d-block"/>
@@ -162,7 +157,7 @@ const BlogOverviewView = () => {
                                                                 <img src={avatar} alt="" className="avatar-xs rounded-circle" />
                                                             </div>
                                                             <div className="flex-grow-1 ms-3">
-                                                                <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{item.dateCreated}</small></h5>
+                                                                <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{new Date(item.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</small></h5>
                                                                 <p className="text-muted">
                                                                     {item.message}
                                                                 </p>

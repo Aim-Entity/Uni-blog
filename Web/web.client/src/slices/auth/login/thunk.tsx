@@ -19,7 +19,7 @@ export const loginUser = (user : any, history : any) => async (dispatch : any) =
       response = finallogin.data;
       if (finallogin.status === "success") {
         dispatch(loginSuccess(response));
-        history('/blog-list')
+        history('/')
       } 
       else {
         dispatch(apiError(finallogin));

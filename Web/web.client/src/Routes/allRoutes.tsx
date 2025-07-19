@@ -6,7 +6,7 @@ import BlogOverviewView from "../pages/Blogs/BlogOverview";
 import Logout from "../pages/Authentication/Logout";
 
 const protectedRoutes = [
-  { path: "/blog-list", component: <BlogListView /> },
+  { path: "/", component: <BlogListView /> },
   { path: "/blog-create", component: <BlogCreateView /> },
   { path: "/blog-overview/:blogId", component: <BlogOverviewView /> },
 

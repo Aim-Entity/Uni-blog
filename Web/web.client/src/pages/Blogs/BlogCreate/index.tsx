@@ -19,6 +19,7 @@ const BlogCreateView = (props : any) => {
         authorName: string,
         title: string,
         description: string,
+        thumbnailDescription: string,
         thumbnailImage: string | ArrayBuffer | null,
         isPrivate: boolean,
     }
@@ -31,6 +32,7 @@ const BlogCreateView = (props : any) => {
         title: "",
         description: "",
         thumbnailImage: "",
+        thumbnailDescription: "",
         isPrivate: true,
     });
 
@@ -92,6 +94,17 @@ document.title="Blog Create";
                                             onChange={(e) => {
                                                 onFileChange(e);
                                             }}/>
+                                        </div>
+
+                                        <div className="mb-3">
+                                            <Label className="form-label" htmlFor="project-title-input">Thumbnail Description</Label>
+                                            <Input type="text" className="form-control" id="project-thumbnail-description-input"
+                                                placeholder="Enter description" 
+                                                value={blogDraft.thumbnailDescription}
+                                                onChange={(e) => {
+                                                    setBlogDraft({...blogDraft, thumbnailDescription: e.target.value});
+                                                }}
+                                                required/>
                                         </div>
 
                                         <div className="mb-3">

@@ -10,7 +10,7 @@ export const createBlog = (blog : any, history : any) => async () => {
 
     response = await postBlogCreate(blog);
 
-    history('/blog-list')
+    history('/')
   } catch (error) {
     console.log(error);
   }

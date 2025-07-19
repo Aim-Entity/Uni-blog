@@ -9,7 +9,7 @@ const HorizontalLayout = (props : any) => {
             <div className="row justify-content-center mb-4 mt-4">
                 <div className='col-xxl-10 m-0 w-25 d-flex justify-content-between align-items-center'>
                     <div className="">
-                        <Link to="/blog-list"><h4 className="text-dark">Blogs</h4></Link>
+                        <Link to="/"><h4 className="text-dark">Blogs</h4></Link>
                     </div>
 
                     <div className="">
