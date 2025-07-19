@@ -44,7 +44,6 @@ const MainList = () => {
         setBlogs(blogsData);
     }, [blogsData]);
 
-
     //pagination
     const [currentPage, setCurrentPage] = useState(1);
     const perPageData = 6;
@@ -120,25 +119,6 @@ const MainList = () => {
                         </Col>
                     ))}
                 </Row>
-
-                {/* <div className="row g-0 text-center text-sm-start align-items-center mb-4">
-                    <div className="col-sm-6">
-                        <div>
-                            <p className="mb-sm-0 text-muted">Showing <span className="fw-semibold">1</span> to <span className="fw-semibold">6</span> of <span className="fw-semibold text-decoration-underline">21</span> entries</p>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <Pagination
-                            perPageData={perPageData}
-                            data={dummyData}
-                            currentPage={currentPage}
-                            setCurrentPage={setCurrentPage}
-                        />
-                    </div>
-                </div> */}
-
-
-
             </div>
         </React.Fragment>
     )

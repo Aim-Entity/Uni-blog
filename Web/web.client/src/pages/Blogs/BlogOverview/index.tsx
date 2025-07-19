@@ -94,7 +94,13 @@ const BlogOverviewView = () => {
     }, [blogsData]);
 
     useEffect(() => {
-        setCurrentBlogs(blogs.find(blog => blog.id.toString() == blogId));
+        let blog = blogs.find(blog => blog.id.toString() == blogId);
+        if(blog)
+        {
+            blog = {...blog, description: blog.description.replace("<table>", '<table class="table">')};
+        }
+
+        setCurrentBlogs(blog);
     }, [blogs, blogId]);
 
     useEffect(() => {
@@ -157,7 +163,9 @@ const BlogOverviewView = () => {
                                                             </div>
                                                             <div className="flex-grow-1 ms-3">
                                                                 <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{item.dateCreated}</small></h5>
-                                                                <p className="text-muted">{item.message}</p>
+                                                                <p className="text-muted">
+                                                                    {item.message}
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     ))}

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const HorizontalLayout = (props : any) => {
     return (
         <React.Fragment>
-            <div className="row justify-content-center mt-4 mb-4">
+            <div className="row justify-content-center mb-4 mt-4">
                 <div className='col-xxl-10 m-0 w-25 d-flex justify-content-between align-items-center'>
                     <div className="">
                         <Link to="/blog-list"><h4 className="text-dark">Blogs</h4></Link>
@@ -17,7 +17,7 @@ const HorizontalLayout = (props : any) => {
                     </div>
 
                     <div className="">
-                        <Link to="#"><h4 className="text-dark">Logout</h4></Link>
+                        <Link to="/logout"><h4 className="text-dark">Logout</h4></Link>
                     </div>
                 </div>
             </div>
