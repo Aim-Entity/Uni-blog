@@ -65,6 +65,7 @@ namespace Infrastructure.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ThumbnailImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ThumbnailDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsPrivate = table.Column<bool>(type: "bit", nullable: false)
                 },

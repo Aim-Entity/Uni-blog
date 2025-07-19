@@ -47,6 +47,10 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ThumbnailDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ThumbnailImage")
                         .HasColumnType("nvarchar(max)");
 

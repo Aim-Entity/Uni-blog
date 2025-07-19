@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20250718124612_Init")]
+    [Migration("20250719172810_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -49,6 +49,10 @@ namespace Infrastructure.Migrations
 
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ThumbnailDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ThumbnailImage")
                         .HasColumnType("nvarchar(max)");

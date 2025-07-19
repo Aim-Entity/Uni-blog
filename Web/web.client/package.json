@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.7",
     "feather-icons-react": "^0.9.0",
     "formik": "^2.4.6",
+    "luxon": "^3.7.1",
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
