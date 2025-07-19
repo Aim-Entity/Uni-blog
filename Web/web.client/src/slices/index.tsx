@@ -8,12 +8,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import LoginReducer from "./auth/login/reducer";
 import AccountReducer from "./auth/register/reducer";
 import BlogReducer from "./blog/reducer";
+import CommentReducer from "./comment/reducer";
 
 const rootReducer = combineReducers({
     // Layout: LayoutReducer,
     Login: LoginReducer,
     Account: AccountReducer,
     Blog: BlogReducer,
+    Comment: CommentReducer,
 });
 
 export const store = configureStore({ reducer: rootReducer, devTools: true });

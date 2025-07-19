@@ -4,12 +4,13 @@ import { Link, useParams } from 'react-router-dom';
 
 import overview from "../../../assets/images/blog/overview.jpg"
 import avatar from "../../../assets/images/users/user-dummy-img.jpg"
-import small4 from "../../../assets/images/small/img-4.jpg"
 import SimpleBar from 'simplebar-react';
-import { allBlogs } from '../../../slices/thunks';
+import { allBlogs, allCommentsWithBlogId } from '../../../slices/thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import HorizontalLayout from '../../../Layouts/HorizontalLayout';
+import { postCommentCreate } from '../../../helpers/fakebackend_helper';
+import { GetUserId } from '../../../utils/UserCookies';
 
 const BlogOverviewView = () => {
     const {blogId} = useParams()
@@ -27,18 +28,62 @@ const BlogOverviewView = () => {
         author: string,
         authorName: string,
         dateCreated: string,
+    }
 
+    type commentType = {
+        author: {
+            email: string,
+            firstName: string,
+            lastName: string,
+            id: string
+        },
+        dateCreated: string,
+        message: string,
+    }
+
+    type commentDraftType = {
+        authorId: string
+        blogId: number
+        message: string,
     }
 
     const [blogs, setBlogs] = useState<blogType[]>([]);
     const [currentBlog, setCurrentBlogs] = useState<blogType>();
 
+    const [comments, setComments] = useState<commentType[]>([]);
+    const [commentDraft, setCommentDraft] = useState<commentDraftType>({
+        authorId: GetUserId(),
+        blogId: Number(blogId),
+        message: ""
+    });
+    
     const selectBlogs = createSelector(
         (slice) => slice.Blog,
         (state) => state.blogs
     );
 
     const blogsData = useSelector(selectBlogs);
+
+    console.log();
+
+    const selectComments = createSelector(
+        (slice) => slice.Comment,
+        (state) => state.comments
+    );
+
+    const commentData = useSelector(selectComments);
+
+    useEffect(() => {
+        dispatch(allCommentsWithBlogId({blogId: Number(blogId)}));
+    }, [dispatch, blogId]);
+    
+    // useEffect(() => {
+    //     dispatch(postCommentCreate({blogId: 2, authorId: "cca55094-06e1-4d43-a5f8-67796d81231a", message: "Auto Comment"}));
+    // }, [dispatch]);
+
+    useEffect(() => {
+        setComments(commentData);
+    }, [commentData]);
 
     useEffect(() => {
         dispatch(allBlogs());
@@ -105,38 +150,34 @@ const BlogOverviewView = () => {
                                             <div>
                                                 <h5 className="fw-semibold mb-3">Comments:</h5>
                                                 <SimpleBar style={{height: "300px"}} className="px-3 mx-n3 mb-2">
-                                                    <div className="d-flex mb-4">
-                                                        <div className="flex-shrink-0">
-                                                            <img src={avatar} alt="" className="avatar-xs rounded-circle" />
+                                                    {comments.map((item, idx) => (
+                                                        <div className="d-flex mb-4">
+                                                            <div className="flex-shrink-0">
+                                                                <img src={avatar} alt="" className="avatar-xs rounded-circle" />
+                                                            </div>
+                                                            <div className="flex-grow-1 ms-3">
+                                                                <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{item.dateCreated}</small></h5>
+                                                                <p className="text-muted">{item.message}</p>
+                                                            </div>
                                                         </div>
-                                                        <div className="flex-grow-1 ms-3">
-                                                            <h5 className="fs-13">Joseph Parker <small className="text-muted ms-2">20 Dec 2021 - 05:47AM</small></h5>
-                                                            <p className="text-muted">I am getting message from customers that when they place order always get error message .</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="d-flex mb-4">
-                                                        <div className="flex-shrink-0">
-                                                            <img src={avatar} alt="" className="avatar-xs rounded-circle" />
-                                                        </div>
-                                                        <div className="flex-grow-1 ms-3">
-                                                            <h5 className="fs-13">Donald Palmer <small className="text-muted ms-2">24 Dec 2021 - 05:20PM</small></h5>
-                                                            <p className="text-muted">If you have further questions, please contact Customer Support from the “Action Menu” on your <Link to="#" className="text-decoration-underline">Online Order Support</Link>.</p>
-                                                        </div>
-                                                    </div>
-                                                    
+                                                    ))}
                                                 </SimpleBar>
-                                                <form className="mt-4">
+                                                <form className="mt-4" onSubmit={(e) => {
+                                                        dispatch(postCommentCreate({blogId: commentDraft.blogId, authorId: commentDraft.authorId, message: commentDraft.message}));
+                                                        location.reload()
+                                                    }}>
                                                     <div className="row g-3">
                                                         <div className="col-12">
-                                                            <label htmlFor="inputName" className="form-label text-body">Name</label>
-                                                            <input className="form-control bg-light border-light" id="inputName" placeholder="Enter your name" required />
-                                                        </div>
-                                                        <div className="col-12">
                                                             <label htmlFor="exampleFormControlTextarea1" className="form-label text-body">Leave a Comments</label>
-                                                            <textarea className="form-control bg-light border-light" id="exampleFormControlTextarea1" rows={3} placeholder="Enter your comment..." required></textarea>
+                                                            <textarea className="form-control bg-light border-light" id="exampleFormControlTextarea1" rows={3} placeholder="Enter your comment..." 
+                                                            value={commentDraft?.message} 
+                                                            onChange={(e) => {
+                                                                setCommentDraft({...commentDraft, message: e.target.value});
+                                                            }}
+                                                            required></textarea>
                                                         </div>
                                                         <div className="col-12 text-end">
-                                                            <Link to="#" className="btn btn-success">Post Comments</Link>
+                                                            <button type='submit' className="btn btn-success">Post Comments</button>
                                                         </div>
                                                     </div>
                                                 </form>

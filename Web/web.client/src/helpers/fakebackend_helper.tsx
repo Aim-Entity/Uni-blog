@@ -27,14 +27,6 @@ type RegisterType = {
   password: string,
   confirm_password: string
 }
-
-type blogCreateType = {
-    title: string,
-    description: string,
-    thumbnail: string,
-    private: boolean,
-}
-
 export const postLoginUser = (user: LoginType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomLogin", user, {
   withCredentials: true
 });
@@ -42,5 +34,9 @@ export const postLoginUser = (user: LoginType) => api.create("https://localhost:
 export const postRegisterUser = (user: RegisterType) => api.create("https://localhost:7178/api/CustomAuthentication/CustomRegister", user);
 
 //Blog
-export const postBlogCreate = (blog: blogCreateType) => api.create("https://localhost:7178/api/Blog/Create", blog);
+export const postBlogCreate = (blog: any) => api.create("https://localhost:7178/api/Blog/Create", blog);
 export const getAllBlogs = () => api.get("https://localhost:7178/api/Blog/Blogs");
+
+//Comment
+export const getAllCommentsWithBlogid = (blogId: number) => api.get("https://localhost:7178/api/Comment/AllCommentWthBlogId/?blogId=" + blogId);
+export const postCommentCreate = (comment: any) => api.create("https://localhost:7178/api/Comment/Create", comment);
