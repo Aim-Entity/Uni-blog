@@ -11,6 +11,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import HorizontalLayout from '../../../Layouts/HorizontalLayout';
 import { postCommentCreate } from '../../../helpers/fakebackend_helper';
 import { GetUserId } from '../../../utils/UserCookies';
+import Loader from '../../../Components/Common/Loader';
 
 const BlogOverviewView = () => {
     const {blogId} = useParams()
@@ -57,6 +58,9 @@ const BlogOverviewView = () => {
         blogId: Number(blogId),
         message: ""
     });
+
+    const [blogsLoading, setBlogsLoading] = useState<boolean>(true);
+    
     
     const selectBlogs = createSelector(
         (slice) => slice.Blog,
@@ -64,8 +68,6 @@ const BlogOverviewView = () => {
     );
 
     const blogsData = useSelector(selectBlogs);
-
-    console.log();
 
     const selectComments = createSelector(
         (slice) => slice.Comment,
@@ -78,9 +80,12 @@ const BlogOverviewView = () => {
         dispatch(allCommentsWithBlogId({blogId: Number(blogId)}));
     }, [dispatch, blogId]);
     
-    // useEffect(() => {
-    //     dispatch(postCommentCreate({blogId: 2, authorId: "cca55094-06e1-4d43-a5f8-67796d81231a", message: "Auto Comment"}));
-    // }, [dispatch]);
+    const selectBlogsLoading = createSelector(
+        (slice) => slice.Blog,
+        (state) => state.blogsLoading
+    );
+
+    const blogsLoadingData = useSelector(selectBlogsLoading);
 
     useEffect(() => {
         setComments(commentData);
@@ -105,10 +110,26 @@ const BlogOverviewView = () => {
     }, [blogs, blogId]);
 
     useEffect(() => {
-        descriptionContainer.current.innerHTML = currentBlog?.description;
+        if(descriptionContainer.current) {
+            descriptionContainer.current.innerHTML = currentBlog?.description;
+        }
     }, [currentBlog]);
 
+    useEffect(() => {
+        setBlogsLoading(blogsLoadingData);
+    }, [blogsLoadingData]);
+
     document.title = "Blog Overview";
+
+    if(blogsLoading) {
+      return (
+        <React.Fragment>
+            <div className='d-flex justify-content-center mt-4'>
+                <Loader />
+            </div>
+        </React.Fragment>
+      )  
+    }
 
     return (
         <React.Fragment>
@@ -192,7 +213,7 @@ const BlogOverviewView = () => {
                                                 )}
                                                 
                                                 {currentBlog?.isCommentsEnabled == false && (
-                                                    <h3>Comments Disabled</h3>
+                                                    <h5>Comments Disabled</h5>
                                                 )}
 
                                             </div>

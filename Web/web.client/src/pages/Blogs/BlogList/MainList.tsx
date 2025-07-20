@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createSelector } from '@reduxjs/toolkit'
 import { allBlogs } from '../../../slices/thunks'
 import { GetUserId } from '../../../utils/UserCookies'
+import Loader from '../../../Components/Common/Loader'
 
 const MainList = () => {
     const dispatch = useDispatch<any>();
@@ -29,17 +30,28 @@ const MainList = () => {
     }
 
     const [blogs, setBlogs] = useState<blogType[]>([]);
+    const [blogsLoading, setBlogsLoading] = useState<boolean>(true);
 
     const selectBlogs = createSelector(
         (slice) => slice.Blog,
         (state) => state.blogs
     );
 
+    const selectBlogsLoading = createSelector(
+        (slice) => slice.Blog,
+        (state) => state.blogsLoading
+    );
+
     const blogsData = useSelector(selectBlogs);
+    const blogsLoadingData = useSelector(selectBlogsLoading);
 
     useEffect(() => {
         dispatch(allBlogs());
     }, [dispatch]);
+
+    useEffect(() => {
+        setBlogsLoading(blogsLoadingData);
+    }, [blogsLoadingData]);
 
     useEffect(() => {
         setBlogs(blogsData);
@@ -50,33 +62,23 @@ const MainList = () => {
     const perPageData = 6;
     const indexOfLast = currentPage * perPageData;
 
+    if(blogsLoading) {
+      return (
+        <React.Fragment>
+            <div className='d-flex justify-content-center mt-4'>
+                <Loader />
+            </div>
+        </React.Fragment>
+      )  
+    }
 
     return (
         <React.Fragment>
             <div className="col-xxl-12">
                 <div className="row g-4 mb-3">
-                    <div className="col-sm-auto">
+                    <div className="w-100">
                         <div>
-                            <Link to="/blog-create" className="btn btn-success"><i className="ri-add-line align-bottom me-1"></i> Add New</Link>
-                        </div>
-                    </div>
-                    <div className="col-sm">
-                        <div className="d-flex justify-content-sm-end gap-2">
-                            <div className="search-box ms-2">
-                                <input type="text" className="form-control" placeholder="Search..." />
-                                <i className="ri-search-line search-icon"></i>
-                            </div>
-
-                            <select className="form-control w-md" defaultValue="Yesterday" style={{width: "152px"}}>
-                                <option value="All">All</option>
-                                <option value="Today">Today</option>
-                                <option value="Yesterday">Yesterday</option>
-                                <option value="Last 7 Days">Last 7 Days</option>
-                                <option value="Last 30 Days">Last 30 Days</option>
-                                <option value="This Month">This Month</option>
-                                <option value="Last Year">Last Year</option>
-                            </select>
-
+                            <Link to="/blog-create" className="btn btn-success w-100"><i className="ri-add-line align-bottom me-1 w-full"></i> Add New</Link>
                         </div>
                     </div>
                 </div>
