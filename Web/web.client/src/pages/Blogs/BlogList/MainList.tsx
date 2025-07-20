@@ -18,15 +18,10 @@ const MainList = () => {
         description: string,
         thumbnailImage: string | ArrayBuffer | null,
         thumbnailDescription: string,
-        status: boolean,
+        isPrivate: boolean,
         author: string,
         authorName: string,
         dateCreated: string,
-    }
-
-    enum StatusEnum {
-        Public,
-        Private
     }
 
     const [blogs, setBlogs] = useState<blogType[]>([]);
@@ -57,11 +52,6 @@ const MainList = () => {
         setBlogs(blogsData);
     }, [blogsData]);
 
-    //pagination
-    const [currentPage, setCurrentPage] = useState(1);
-    const perPageData = 6;
-    const indexOfLast = currentPage * perPageData;
-
     if(blogsLoading) {
       return (
         <React.Fragment>
@@ -84,10 +74,9 @@ const MainList = () => {
                 </div>
 
                 <Row className='gx-4'>
-                    {blogs.map((item, idx) => (
+                    {blogs.filter((blog) => blog.isPrivate  == false || blog.author == GetUserId()).map((item, idx) => (
                         
                         <Col xxl={12} key={idx}>
-                            {item.author == GetUserId() || item.status == StatusEnum.Private}
                             <Card>
                                 <CardBody>
                                     <div className="row g-4">
@@ -106,7 +95,7 @@ const MainList = () => {
                                                 <h5 className="fs-15 fw-semibold">{item.title}</h5>
                                             </Link>
                                             <div className="d-flex align-items-center gap-2 mb-3 flex-wrap">
-                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {new Date(item.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</span> | <span className='text-primary'><i className="ri-user-3-line me-1"></i> {item.authorName}</span>
+                                                <span className="text-muted"><i className="ri-calendar-event-line me-1"></i> {new Date(item.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</span> | <span className="text-muted"><i className="ri-eye-line me-1"></i> {item.isPrivate == true ? "Private" : "Public"}</span> | <span className='text-primary'><i className="ri-user-3-line me-1"></i> {item.authorName}</span>
                                             </div>
                                             <p className="text-muted mb-2">{item.thumbnailDescription}</p>
                                             <Link to={`/blog-overview/${item.id}`} className="text-decoration-underline">Read more <i className="ri-arrow-right-line"></i></Link>

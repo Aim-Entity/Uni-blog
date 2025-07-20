@@ -215,7 +215,6 @@ const BlogOverviewView = () => {
                                                 {currentBlog?.isCommentsEnabled == false && (
                                                     <h5>Comments Disabled</h5>
                                                 )}
-
                                             </div>
                                         </div>
                                     </div>
