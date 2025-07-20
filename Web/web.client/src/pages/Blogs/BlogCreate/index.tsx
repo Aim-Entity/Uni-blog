@@ -22,6 +22,7 @@ const BlogCreateView = (props : any) => {
         thumbnailDescription: string,
         thumbnailImage: string | ArrayBuffer | null,
         isPrivate: boolean,
+        IsCommentsEnabled: boolean,
     }
 
     const dispatch : any = useDispatch();
@@ -34,15 +35,8 @@ const BlogCreateView = (props : any) => {
         thumbnailImage: "",
         thumbnailDescription: "",
         isPrivate: true,
+        IsCommentsEnabled: false,
     });
-
-    const SingleOptions = [
-        { value: 'Watches', label: 'Watches' },
-        { value: 'Headset', label: 'Headset' },
-        { value: 'Sweatshirt', label: 'Sweatshirt' },
-        { value: '20% off', label: '20% off' },
-        { value: '4 star', label: '4 star' },
-      ];
 
     const [selectedMulti, setselectedMulti] = useState<any>(null);
 
@@ -124,19 +118,6 @@ document.title="Blog Create";
                                                 required
                                                 />
                                         </div>
-
-                                        <Row>
-                                            <Col lg={12}>
-                                                <div className="mb-3 mb-lg-0">
-                                                    <Label htmlFor="choices-priority-input" className="form-label">Enable Comments</Label>
-                                                    <select className="form-select" data-choices data-choices-search-false
-                                                        id="choices-priority-input">
-                                                        <option defaultValue="Enable">Enable</option>
-                                                        <option value="Disable">Disable</option>
-                                                    </select>
-                                                </div>
-                                            </Col>
-                                        </Row>
                                     </CardBody>
                                 </Card>
 
@@ -162,40 +143,28 @@ document.title="Blog Create";
                                                 <option defaultValue="Private">Private</option>
                                                 <option value="Public">Public</option>
                                             </select>
-                                            <p>{blogDraft.isPrivate.toString()}</p>
                                         </div>
                                     </CardBody>
                                 </div>
 
                                 <div className="card">
                                     <div className="card-header">
-                                        <h5 className="card-title mb-0">Tags</h5>
+                                        <h5 className="card-title mb-0">Comments</h5>
                                     </div>
                                     <CardBody>
-                                        <div className="mb-3">
-                                            <Label htmlFor="choices-categories-input" className="form-label">Categories</Label>
-                                            <select className="form-select" data-choices data-choices-search-false
-                                                id="choices-categories-input">
-                                                <option defaultValue="Designing">Designing</option>
-                                                <option value="Development">Development</option>
-                                            </select>
-                                        </div>
+                                        <Label htmlFor="choices-priority-input" className="form-label">Enable Comments</Label>
+                                        <select className="form-select" data-choices data-choices-search-false
+                                            id="choices-priority-input"
+                                            onChange={e => {
+                                                setBlogDraft({...blogDraft, IsCommentsEnabled: e.target.value == "Enable" ? true : false})
+                                            }}
+                                            required>
+                                            <option defaultValue="Disable">Disable</option>
+                                            <option value="Enable">Enable</option>
+                                        </select>
 
-                                        <div>
-                                            <Label htmlFor="choices-text-input" className="form-label">Skills</Label>
-                                            <Select
-                                                value={selectedMulti}
-                                                isMulti={true}                                                            
-                                                onChange={(selectedMulti:any) => {
-                                                    handleMulti(selectedMulti);
-                                                }}
-                                                options={SingleOptions}
-                                            />
-                                        </div>
                                     </CardBody>
                                 </div>
-
-                                
                             </Col>
                         </Row>
                     </Form>

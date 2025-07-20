@@ -21,7 +21,8 @@ namespace Domain.Entities.BlogEntities
         public string? ThumbnailImage { get; set; }
         public string ThumbnailDescription { get; set; }
         public string Description { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool IsPrivate { get; set; } = true;
+        public bool IsCommentsEnabled { get; set; } = false;
         public List<Comment>? Comments {  get; set; } = new List<Comment>();
     }
 }

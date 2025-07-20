@@ -53,7 +53,7 @@ const MainList = () => {
 
     return (
         <React.Fragment>
-            <div className="col-xxl-9">
+            <div className="col-xxl-12">
                 <div className="row g-4 mb-3">
                     <div className="col-sm-auto">
                         <div>

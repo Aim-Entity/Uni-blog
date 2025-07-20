@@ -44,6 +44,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsCommentsEnabled")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("bit");
 

@@ -67,7 +67,8 @@ namespace Infrastructure.Migrations
                     ThumbnailImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ThumbnailDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsPrivate = table.Column<bool>(type: "bit", nullable: false)
+                    IsPrivate = table.Column<bool>(type: "bit", nullable: false),
+                    IsCommentsEnabled = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -14,7 +14,7 @@ const BlogListView = () => {
                     <HorizontalLayout />
                     <Row>
 
-                        <Sidepanel />
+                        {/* <Sidepanel /> */}
 
                         <MainList />
 

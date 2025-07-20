@@ -28,6 +28,7 @@ const BlogOverviewView = () => {
         author: string,
         authorName: string,
         dateCreated: string,
+        isCommentsEnabled: boolean,
     }
 
     type commentType = {
@@ -150,40 +151,50 @@ const BlogOverviewView = () => {
                                             </div>
                                             <div>
                                                 <h5 className="fw-semibold mb-3">Comments:</h5>
-                                                <SimpleBar style={{height: "300px"}} className="px-3 mx-n3 mb-2">
-                                                    {comments.map((item, idx) => (
-                                                        <div className="d-flex mb-4">
-                                                            <div className="flex-shrink-0">
-                                                                <img src={avatar} alt="" className="avatar-xs rounded-circle" />
+                                                {currentBlog?.isCommentsEnabled == true && (
+                                                    <div>
+                                                        <SimpleBar style={{maxHeight: "300px"}} className="px-3 mx-n3 mb-2">
+                                                            {comments.map((item, idx) => (
+                                                                <div className="d-flex mb-4">
+                                                                    <div className="flex-shrink-0">
+                                                                        <img src={avatar} alt="" className="avatar-xs rounded-circle" />
+                                                                    </div>
+                                                                    <div className="flex-grow-1 ms-3">
+                                                                        <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{new Date(item.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</small></h5>
+                                                                        <p className="text-muted">
+                                                                            {item.message}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </SimpleBar>
+
+                                                        <form className="mt-4" onSubmit={(e) => {
+                                                            dispatch(postCommentCreate({blogId: commentDraft.blogId, authorId: commentDraft.authorId, message: commentDraft.message}));
+                                                            location.reload()
+                                                        }}>
+                                                            <div className="row g-3">
+                                                                <div className="col-12">
+                                                                    <label htmlFor="exampleFormControlTextarea1" className="form-label text-body">Leave a Comments</label>
+                                                                    <textarea className="form-control bg-light border-light" id="exampleFormControlTextarea1" rows={3} placeholder="Enter your comment..." 
+                                                                    value={commentDraft?.message} 
+                                                                    onChange={(e) => {
+                                                                        setCommentDraft({...commentDraft, message: e.target.value});
+                                                                    }}
+                                                                    required></textarea>
+                                                                </div>
+                                                                <div className="col-12 text-end">
+                                                                    <button type='submit' className="btn btn-success">Post Comments</button>
+                                                                </div>
                                                             </div>
-                                                            <div className="flex-grow-1 ms-3">
-                                                                <h5 className="fs-13">{item.author.firstName} {item.author.lastName} <small className="text-muted ms-2">{new Date(item.dateCreated).toLocaleTimeString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}</small></h5>
-                                                                <p className="text-muted">
-                                                                    {item.message}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </SimpleBar>
-                                                <form className="mt-4" onSubmit={(e) => {
-                                                        dispatch(postCommentCreate({blogId: commentDraft.blogId, authorId: commentDraft.authorId, message: commentDraft.message}));
-                                                        location.reload()
-                                                    }}>
-                                                    <div className="row g-3">
-                                                        <div className="col-12">
-                                                            <label htmlFor="exampleFormControlTextarea1" className="form-label text-body">Leave a Comments</label>
-                                                            <textarea className="form-control bg-light border-light" id="exampleFormControlTextarea1" rows={3} placeholder="Enter your comment..." 
-                                                            value={commentDraft?.message} 
-                                                            onChange={(e) => {
-                                                                setCommentDraft({...commentDraft, message: e.target.value});
-                                                            }}
-                                                            required></textarea>
-                                                        </div>
-                                                        <div className="col-12 text-end">
-                                                            <button type='submit' className="btn btn-success">Post Comments</button>
-                                                        </div>
+                                                        </form>
                                                     </div>
-                                                </form>
+                                                )}
+                                                
+                                                {currentBlog?.isCommentsEnabled == false && (
+                                                    <h3>Comments Disabled</h3>
+                                                )}
+
                                             </div>
                                         </div>
                                     </div>
